@@ -11,13 +11,14 @@ namespace Persistence
         {
             if (!context.Gardens.Any())
             {
-                var gardenAId = Guid.NewGuid();
+                var gardenId = Guid.NewGuid();
+                var strainId = Guid.NewGuid();
 
                 var gardens = new List<Garden>
                 {
                     new Garden
                     {
-                        Id = gardenAId,
+                        Id = gardenId,
                         Name = "Garden A",
                         Comment = "This is a Comment",
                         Location = "Outside",
@@ -67,8 +68,8 @@ namespace Persistence
                     new Plant 
                     {
                         Name = "Plant XX1",
-                        GardenId = gardenAId,
-                        StrainId = Guid.NewGuid(),
+                        GardenId = gardenId,
+                        StrainId = strainId,
                         Comment = "This is a test comment",
                         Notes = "This is a test note",
                         GrowCycleLength = "{\"value\":\"8\",\"metric\":\"weeks\"}",
@@ -89,15 +90,15 @@ namespace Persistence
                     new Plant 
                     {
                         Name = "Plant XX2",
-                        GardenId = gardenAId,
-                        StrainId = Guid.NewGuid(),
+                        GardenId = gardenId,
+                        StrainId = strainId,
                         Comment = "This is a test comment",
                         Notes = "This is a test note",
                         GrowCycleLength = "{\"value\":\"8\",\"metric\":\"weeks\"}",
                         Aquired = DateTime.Now,
                         Parentage = "N/A",
-                        Origin = "N/A",
-                        Gender = "Female",
+                        Origin = "Clone",
+                        Gender = "FEMINIZED",
                         DaysFlowering = 24,
                         DaysCured = 8,
                         HarvestedWeight = "{\"value\":\"8\",\"metric\":\"lbs\"}",
@@ -111,15 +112,15 @@ namespace Persistence
                     new Plant 
                     {
                         Name = "Plant XX3",
-                        GardenId = gardenAId,
+                        GardenId = gardenId,
                         StrainId = Guid.NewGuid(),
                         Comment = "This is a test comment",
                         Notes = "This is a test note",
                         GrowCycleLength = "{\"value\":\"8\",\"metric\":\"weeks\"}",
                         Aquired = DateTime.Now,
                         Parentage = "N/A",
-                        Origin = "N/A",
-                        Gender = "Female",
+                        Origin = "SEED",
+                        Gender = "FEMINIZED",
                         DaysFlowering = 24,
                         DaysCured = 8,
                         HarvestedWeight = "{\"value\":\"8\",\"metric\":\"lbs\"}",
@@ -133,15 +134,15 @@ namespace Persistence
                     new Plant 
                     {
                         Name = "Plant XX4",
-                        GardenId = gardenAId,
-                        StrainId = Guid.NewGuid(),
+                        GardenId = gardenId,
+                        StrainId = strainId,
                         Comment = "This is a test comment",
                         Notes = "This is a test note",
                         GrowCycleLength = "{\"value\":\"8\",\"metric\":\"weeks\"}",
                         Aquired = DateTime.Now,
                         Parentage = "N/A",
-                        Origin = "N/A",
-                        Gender = "Female",
+                        Origin = "SEED",
+                        Gender = "FEMINIZED",
                         DaysFlowering = 24,
                         DaysCured = 8,
                         HarvestedWeight = "{\"value\":\"8\",\"metric\":\"lbs\"}",
@@ -153,10 +154,45 @@ namespace Persistence
                         LastUpdated = DateTime.Now.AddMonths(1)
                     }
                 };
+                var strains = new List<Strain> {
+                    new Strain {
+                        Id = strainId,
+                        Name = "Strain XX1",
+                        Comment = "This is a test comment",
+                        Notes = "This is a test Note",
+                        Aquired = DateTime.Now,
+                        Price = 45.00,
+                        ThcPercentage = 76.21,
+                        CbdPercentage = 10.08,
+                        Parentage = "N/A",
+                        Aroma = "",
+                        Taste = "",
+                        Tags = "",
+                        Editors = "[\"Editor A\", \"Editor B\"]",
+                        Created = DateTime.Now,
+                        LastUpdated = DateTime.Now
+                    },
+                    new Strain {
+                        Name = "Strain XX2",
+                        Comment = "This is a test comment",
+                        Notes = "This is a test Note",
+                        Aquired = DateTime.Now,
+                        Price = 45.00,
+                        ThcPercentage = 76.21,
+                        CbdPercentage = 10.08,
+                        Parentage = "N/A",
+                        Aroma = "",
+                        Taste = "",
+                        Tags = "",
+                        Editors = "[\"Editor A\", \"Editor B\"]",
+                        Created = DateTime.Now,
+                        LastUpdated = DateTime.Now
+                    },
+                };
 
                 var gardenEntries = new List<GardenEntry> {
                     new GardenEntry {
-                        GardenId = gardenAId,
+                        GardenId = gardenId,
                         Title = "Garden Entry XX1",
                         Comment = "This is a test comment",
                         Temperature = "{\"value\":74.2,\"metric\":\"F\"}",
@@ -166,7 +202,7 @@ namespace Persistence
                         Editors = "[\"Editor A\"]",
                     },
                     new GardenEntry {
-                        GardenId = gardenAId,
+                        GardenId = gardenId,
                         Title = "Garden Entry XX2",
                         Comment = "This is a test comment",
                         Temperature = "{\"value\":\"74.2\",\"metric\":\"F\"}",
@@ -176,7 +212,7 @@ namespace Persistence
                         Editors = "[\"Editor A\"]",
                     },
                     new GardenEntry {
-                        GardenId = gardenAId,
+                        GardenId = gardenId,
                         Title = "Garden Entry XX3",
                         Comment = "This is a test comment",
                         Temperature = "{\"value\":\"74.2\",\"metric\":\"F\"}",
@@ -186,7 +222,7 @@ namespace Persistence
                         Editors = "[\"Editor A\"]",
                     },
                     new GardenEntry {
-                        GardenId = gardenAId,
+                        GardenId = gardenId,
                         Title = "Garden Entry XX4",
                         Comment = "This is a test comment",
                         Temperature = "{\"value\":\"74.2\",\"metric\":\"F\"}",
@@ -196,7 +232,7 @@ namespace Persistence
                         Editors = "[\"Editor A\"]",
                     },
                     new GardenEntry {
-                        GardenId = gardenAId,
+                        GardenId = gardenId,
                         Title = "Garden Entry XX5",
                         Comment = "This is a test comment",
                         Temperature = "{\"value\":74.2,\"metric\":\"F\"}",
@@ -209,6 +245,7 @@ namespace Persistence
                 context.Gardens.AddRange(gardens);
                 context.GardenEntries.AddRange(gardenEntries);
                 context.Plants.AddRange(plants);
+                context.Strains.AddRange(strains);
                 context.SaveChanges();
             }
         }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Persistence.Migrations
 {
-    public partial class IGRUPlants : Migration
+    public partial class Igru : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -82,6 +82,32 @@ namespace Persistence.Migrations
                 {
                     table.PrimaryKey("PK_Plants", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Strains",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Comment = table.Column<string>(nullable: true),
+                    Notes = table.Column<string>(nullable: true),
+                    Aquired = table.Column<DateTime>(nullable: false),
+                    Price = table.Column<double>(nullable: false),
+                    ThcPercentage = table.Column<double>(nullable: false),
+                    CbdPercentage = table.Column<double>(nullable: false),
+                    Parentage = table.Column<string>(nullable: true),
+                    Aroma = table.Column<string>(nullable: true),
+                    Taste = table.Column<string>(nullable: true),
+                    Tags = table.Column<string>(nullable: true),
+                    Owner = table.Column<Guid>(nullable: false),
+                    Editors = table.Column<string>(nullable: true),
+                    Created = table.Column<DateTime>(nullable: false),
+                    LastUpdated = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Strains", x => x.Id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -94,6 +120,9 @@ namespace Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Plants");
+
+            migrationBuilder.DropTable(
+                name: "Strains");
         }
     }
 }
