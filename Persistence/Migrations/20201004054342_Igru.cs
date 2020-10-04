@@ -53,6 +53,27 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "NutrientRecipes",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Comment = table.Column<string>(nullable: true),
+                    Instructions = table.Column<string>(nullable: true),
+                    PH = table.Column<string>(nullable: true),
+                    MixTime = table.Column<string>(nullable: true),
+                    Tags = table.Column<string>(nullable: true),
+                    Owner = table.Column<Guid>(nullable: false),
+                    Editors = table.Column<string>(nullable: true),
+                    Created = table.Column<DateTime>(nullable: false),
+                    LastUpdated = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_NutrientRecipes", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Plants",
                 columns: table => new
                 {
@@ -117,6 +138,9 @@ namespace Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "Gardens");
+
+            migrationBuilder.DropTable(
+                name: "NutrientRecipes");
 
             migrationBuilder.DropTable(
                 name: "Plants");

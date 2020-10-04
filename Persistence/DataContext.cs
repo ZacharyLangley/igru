@@ -1,4 +1,3 @@
-using System;
 using Domain;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,6 +13,7 @@ namespace Persistence
         public DbSet<GardenEntry> GardenEntries { get; set; }
         public DbSet<Plant> Plants { get; set; }
         public DbSet<Strain> Strains { get; set; }
+        public DbSet<NutrientRecipe> NutrientRecipes { get; set; }
         protected override void OnModelCreating(ModelBuilder builder)
         {
 

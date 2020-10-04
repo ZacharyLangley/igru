@@ -110,6 +110,47 @@ namespace Persistence.Migrations
                     b.ToTable("GardenEntries");
                 });
 
+            modelBuilder.Entity("Domain.NutrientRecipe", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Editors")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Instructions")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("MixTime")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<Guid>("Owner")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("PH")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Tags")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("NutrientRecipes");
+                });
+
             modelBuilder.Entity("Domain.Plant", b =>
                 {
                     b.Property<Guid>("Id")

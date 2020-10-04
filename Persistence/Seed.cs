@@ -187,7 +187,34 @@ namespace Persistence
                         Editors = "[\"Editor A\", \"Editor B\"]",
                         Created = DateTime.Now,
                         LastUpdated = DateTime.Now
+                    }
+                };
+
+                var nutrientRecipes = new List<NutrientRecipe> {
+                    new NutrientRecipe {
+                        Name = "Nutrient Recipe XX1",
+                        Comment = "This is a test comment",
+                        Instructions = "This is test instructions",
+                        PH = "7.12",
+                        MixTime = "{\"value\":\"12\",\"metric\":\"minutes\"}",
+                        Tags = "[\"Tag A\", \"Tag B\"]",
+                        Owner = Guid.NewGuid(),
+                        Editors = "[\"Editor A\", \"Editor B\"]",
+                        Created = DateTime.Now,
+                        LastUpdated = DateTime.Now,
                     },
+                    new NutrientRecipe {
+                        Name = "Nutrient Recipe XX2",
+                        Comment = "This is a test comment",
+                        Instructions = "This is test instructions",
+                        PH = "7.12",
+                        MixTime = "{\"value\":\"12\",\"metric\":\"minutes\"}",
+                        Tags = "[\"Tag A\", \"Tag B\"]",
+                        Owner = Guid.NewGuid(),
+                        Editors = "[\"Editor A\", \"Editor B\"]",
+                        Created = DateTime.Now,
+                        LastUpdated = DateTime.Now,
+                    }
                 };
 
                 var gardenEntries = new List<GardenEntry> {
@@ -242,10 +269,12 @@ namespace Persistence
                         Editors = "[\"Editor A\"]",
                     }
                 };
+
                 context.Gardens.AddRange(gardens);
                 context.GardenEntries.AddRange(gardenEntries);
                 context.Plants.AddRange(plants);
                 context.Strains.AddRange(strains);
+                context.NutrientRecipes.AddRange(nutrientRecipes);
                 context.SaveChanges();
             }
         }
