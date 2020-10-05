@@ -74,6 +74,34 @@ namespace Persistence.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "PlantEntries",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(nullable: false),
+                    PlantId = table.Column<Guid>(nullable: false),
+                    NutrientRecipeId = table.Column<Guid>(nullable: false),
+                    Title = table.Column<string>(nullable: true),
+                    Comment = table.Column<string>(nullable: true),
+                    SoilSaturation = table.Column<double>(nullable: false),
+                    PH = table.Column<double>(nullable: false),
+                    Height = table.Column<string>(nullable: true),
+                    BudTrichomeColor = table.Column<string>(nullable: true),
+                    GrowState = table.Column<string>(nullable: true),
+                    ColaSize = table.Column<string>(nullable: true),
+                    AverageBudSize = table.Column<string>(nullable: true),
+                    StalkDiameter = table.Column<string>(nullable: true),
+                    Tags = table.Column<string>(nullable: true),
+                    Owner = table.Column<Guid>(nullable: false),
+                    Editors = table.Column<string>(nullable: true),
+                    Created = table.Column<DateTime>(nullable: false),
+                    LastUpdated = table.Column<DateTime>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PlantEntries", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Plants",
                 columns: table => new
                 {
@@ -141,6 +169,9 @@ namespace Persistence.Migrations
 
             migrationBuilder.DropTable(
                 name: "NutrientRecipes");
+
+            migrationBuilder.DropTable(
+                name: "PlantEntries");
 
             migrationBuilder.DropTable(
                 name: "Plants");

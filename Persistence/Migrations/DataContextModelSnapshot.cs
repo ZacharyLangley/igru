@@ -222,6 +222,68 @@ namespace Persistence.Migrations
                     b.ToTable("Plants");
                 });
 
+            modelBuilder.Entity("Domain.PlantEntry", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("AverageBudSize")
+                        .HasColumnType("text");
+
+                    b.Property<string>("BudTrichomeColor")
+                        .HasColumnType("text");
+
+                    b.Property<string>("ColaSize")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Comment")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<string>("Editors")
+                        .HasColumnType("text");
+
+                    b.Property<string>("GrowState")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Height")
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("LastUpdated")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.Property<Guid>("NutrientRecipeId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("Owner")
+                        .HasColumnType("uuid");
+
+                    b.Property<double>("PH")
+                        .HasColumnType("double precision");
+
+                    b.Property<Guid>("PlantId")
+                        .HasColumnType("uuid");
+
+                    b.Property<double>("SoilSaturation")
+                        .HasColumnType("double precision");
+
+                    b.Property<string>("StalkDiameter")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Tags")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Title")
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("PlantEntries");
+                });
+
             modelBuilder.Entity("Domain.Strain", b =>
                 {
                     b.Property<Guid>("Id")

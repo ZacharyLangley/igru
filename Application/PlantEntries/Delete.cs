@@ -6,7 +6,7 @@ using Application.Errors;
 using MediatR;
 using Persistence;
 
-namespace Application.GardenEntries
+namespace Application.PlantEntries
 {
     public class Delete
     {
@@ -25,12 +25,12 @@ namespace Application.GardenEntries
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                var gardenEntry = await _context.GardenEntries.FindAsync(request.Id);
+                var plantEntry = await _context.PlantEntries.FindAsync(request.Id);
 
-                if (gardenEntry == null)
-                    throw new RestException(HttpStatusCode.NotFound, new {GardenEntry = "Not found"});
+                if (plantEntry == null)
+                    throw new RestException(HttpStatusCode.NotFound, new { PlantEntry = "Not found" });
 
-                _context.Remove(gardenEntry);              
+                _context.Remove(plantEntry);              
 
                 var success = await _context.SaveChangesAsync() > 0;
 
@@ -39,5 +39,5 @@ namespace Application.GardenEntries
                 throw new Exception("Problem saving changes");
             }
         }
-    }       
+    }
 }
