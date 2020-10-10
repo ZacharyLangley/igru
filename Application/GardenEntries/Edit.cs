@@ -21,7 +21,7 @@ namespace Application.GardenEntries
             public string Comment { get; set; }
             public string Tags { get; set; }
             public string Temperature { get; set; }
-            public double Humidity { get; set; }
+            public double? Humidity { get; set; }
             public string LightLevel { get; set; }
             public Guid Owner { get; set; }
             public string Editors { get; set; }
@@ -58,7 +58,7 @@ namespace Application.GardenEntries
                 gardenEntry.Comment = request.Comment ?? gardenEntry.Comment;
                 gardenEntry.Tags = request.Tags ?? gardenEntry.Tags;
                 gardenEntry.Temperature = request.Temperature ?? gardenEntry.Temperature;
-                gardenEntry.Humidity = request.Humidity;
+                gardenEntry.Humidity = request.Humidity ?? gardenEntry.Humidity;
                 gardenEntry.LightLevel = request.LightLevel ?? gardenEntry.LightLevel;
                 gardenEntry.Editors = request.Editors ?? gardenEntry.Editors;
                 gardenEntry.LastUpdated = DateTime.Now;

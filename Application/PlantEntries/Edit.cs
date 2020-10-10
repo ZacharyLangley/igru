@@ -17,11 +17,11 @@ namespace Application.PlantEntries
         {
             public Guid Id { get; set; }
             public Guid PlantId { get; set; }
-            public Guid NutrientRecipeId { get; set; }
+            public Guid? NutrientRecipeId { get; set; }
             public string Title { get; set; }
             public string Comment { get; set; }
-            public double SoilSaturation { get; set; }
-            public double PH { get; set; }
+            public double? SoilSaturation { get; set; }
+            public double? PH { get; set; }
             public string Height { get; set; }
             public string BudTrichomeColor { get; set; }
             public string GrowState { get; set; }
@@ -57,12 +57,11 @@ namespace Application.PlantEntries
                 if (plantEntry == null)
                     throw new RestException(HttpStatusCode.NotFound, new { Plant = "Not found" });
 
-                plantEntry.PlantId = request.PlantId;
-                plantEntry.NutrientRecipeId = request.NutrientRecipeId;;
+                plantEntry.NutrientRecipeId = request.NutrientRecipeId ?? plantEntry.NutrientRecipeId;
                 plantEntry.Title = request.Title ?? plantEntry.Title;
                 plantEntry.Comment = request.Comment ?? plantEntry.Comment;
-                plantEntry.SoilSaturation = request.SoilSaturation;
-                plantEntry.PH = request.PH;
+                plantEntry.SoilSaturation = request.SoilSaturation ?? plantEntry.SoilSaturation;
+                plantEntry.PH = request.PH ?? plantEntry.PH;
                 plantEntry.Height = request.Height ?? plantEntry.Height;
                 plantEntry.BudTrichomeColor = request.BudTrichomeColor ?? plantEntry.BudTrichomeColor;
                 plantEntry.GrowState = request.GrowState ?? plantEntry.GrowState;

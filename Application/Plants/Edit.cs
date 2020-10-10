@@ -16,21 +16,21 @@ namespace Application.Plants
         public class Command : IRequest
         {        
             public Guid Id { get; set; }
-            public Guid GardenId { get; set; }
-            public Guid StrainId { get; set; }
+            public Guid? GardenId { get; set; }
+            public Guid? StrainId { get; set; }
             public string Name { get; set; }
             public string Comment { get; set; }
             public string Notes { get; set; }
             public string GrowCycleLength { get; set; }
-            public DateTime Aquired { get; set; }
+            public DateTime? Aquired { get; set; }
             public string Parentage { get; set; }
             public string Origin { get; set; }
             public string Gender { get; set; }
-            public double DaysFlowering { get; set; }
-            public double DaysCured { get; set; }
+            public double? DaysFlowering { get; set; }
+            public double? DaysCured { get; set; }
             public string HarvestedWeight { get; set; }
-            public double BudDensity { get; set; }
-            public bool BudPistils { get; set; }
+            public double? BudDensity { get; set; }
+            public bool? BudPistils { get; set; }
             public string Tags { get; set; }
             public Guid Owner { get; set; }
             public string Editors { get; set; }
@@ -62,19 +62,19 @@ namespace Application.Plants
 
                 plant.Name = request.Name ?? plant.Name;
                 plant.Comment = request.Comment ?? plant.Comment;
-                plant.GardenId = request.GardenId;
-                plant.StrainId = request.StrainId;
+                plant.GardenId = request.GardenId ?? plant.GardenId;
+                plant.StrainId = request.StrainId ?? plant.StrainId;
                 plant.Notes = request.Notes ?? plant.Notes;
                 plant.GrowCycleLength = request.GrowCycleLength ?? plant.GrowCycleLength;
-                plant.Aquired = request.Aquired;
+                plant.Aquired = request.Aquired ?? plant.Aquired;
                 plant.Parentage = request.Parentage ?? plant.Parentage;
                 plant.Origin = request.Origin ?? plant.Origin;
                 plant.Gender = request.Gender ?? plant.Gender;
-                plant.DaysFlowering = request.DaysFlowering;
-                plant.DaysCured = request.DaysCured;
+                plant.DaysFlowering = request.DaysFlowering ?? plant.DaysFlowering;
+                plant.DaysCured = request.DaysCured ?? plant.DaysCured;
                 plant.HarvestedWeight = request.HarvestedWeight ?? plant.HarvestedWeight;
-                plant.BudDensity = request.BudDensity;
-                plant.BudPistils = request.BudPistils;
+                plant.BudDensity = request.BudDensity ?? plant.BudDensity;
+                plant.BudPistils = request.BudPistils ?? plant.BudPistils;
                 plant.Tags = request.Tags ?? plant.Tags;
                 plant.Editors = request.Editors ?? plant.Editors;
                 plant.LastUpdated = DateTime.Now;

@@ -19,8 +19,8 @@ namespace Application.Strains
             public string Name { get; set; }
             public string Comment { get; set; }
             public string Notes { get; set; }
-            public DateTime Aquired { get; set; }
-            public double Price { get; set; }
+            public DateTime? Aquired { get; set; }
+            public double? Price { get; set; }
             public double ThcPercentage { get; set; }
             public double CbdPercentage { get; set; }
             public string Parentage { get; set; }
@@ -57,8 +57,8 @@ namespace Application.Strains
                 strain.Name = request.Name ?? strain.Name;
                 strain.Comment = request.Comment ?? strain.Comment;
                 strain.Notes = request.Notes ?? strain.Notes;
-                strain.Aquired = request.Aquired;
-                strain.Price = request.Price;
+                strain.Aquired = request.Aquired ?? strain.Aquired;
+                strain.Price = request.Price ?? strain.Price;
                 strain.ThcPercentage = request.ThcPercentage;
                 strain.CbdPercentage = request.CbdPercentage;
                 strain.Parentage = request.Parentage ?? strain.Parentage;
