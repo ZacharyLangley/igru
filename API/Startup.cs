@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.IdentityModel.Tokens;
+using AutoMapper;
 
 using Application.Interfaces;
 using API.Middleware;
@@ -43,6 +44,7 @@ namespace API
                 });
             });
             services.AddMediatR(typeof(List.Handler).Assembly);
+            services.AddAutoMapper(typeof(List.Handler));
             services.AddControllers(opt => 
             {
                 var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
