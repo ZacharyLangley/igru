@@ -26,9 +26,9 @@ namespace Application.GardenEntries
 
             public async Task<List<GardenEntryDto>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var mappedGardenEntries = await _context.GardenEntries.ToListAsync();
+                var gardenEntries = await _context.GardenEntries.ToListAsync();
 
-                return _mapper.Map<List<GardenEntry>, List<GardenEntryDto>>(mappedGardenEntries);   
+                return _mapper.Map<List<GardenEntry>, List<GardenEntryDto>>(gardenEntries);   
             }
         }
     }

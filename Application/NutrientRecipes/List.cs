@@ -5,26 +5,30 @@ using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using AutoMapper;
 
 namespace Application.NutrientRecipes
 {
     public class List
     {
-       public class Query : IRequest<List<NutrientRecipe>> { }
+       public class Query : IRequest<List<NutrientRecipeDto>> { }
 
-        public class Handler : IRequestHandler<Query, List<NutrientRecipe>>
+        public class Handler : IRequestHandler<Query, List<NutrientRecipeDto>>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+
+            public Handler(DataContext context,  IMapper mapper)
             {
+                _mapper = mapper;
                 _context = context;
             }
 
-            public async Task<List<NutrientRecipe>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<List<NutrientRecipeDto>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var nutrientRecipe = await _context.NutrientRecipes.ToListAsync();
+                var nutrientRecipes = await _context.NutrientRecipes.ToListAsync();
 
-                return nutrientRecipe;
+                return _mapper.Map<List<NutrientRecipe>, List<NutrientRecipeDto>>(nutrientRecipes); 
             }
         } 
     }

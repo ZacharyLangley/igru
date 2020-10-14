@@ -35,8 +35,8 @@ namespace Application.GardenEntries
                 if (gardenEntry == null)
                     throw new RestException(HttpStatusCode.NotFound, new { GardenEntry = "Not found" });
 
-                var mappedGarden = _mapper.Map<GardenEntry, GardenEntryDto>(gardenEntry);
-                return mappedGarden;
+                var mappedGardenEntry = _mapper.Map<GardenEntry, GardenEntryDto>(gardenEntry);
+                return mappedGardenEntry;
             }
         }
     }

@@ -6,32 +6,37 @@ using Application.Errors;
 using Domain;
 using MediatR;
 using Persistence;
+using AutoMapper;
 
 namespace Application.NutrientRecipes
 {
     public class Details
     {
-        public class Query : IRequest<NutrientRecipe>
+        public class Query : IRequest<NutrientRecipeDto>
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, NutrientRecipe>
+        public class Handler : IRequestHandler<Query, NutrientRecipeDto>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, IMapper mapper)
             {
-                this._context = context;
+                _mapper = mapper;
+                _context = context;
             }
 
-            public async Task<NutrientRecipe> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<NutrientRecipeDto> Handle(Query request, CancellationToken cancellationToken)
             {
                 var nutrientRecipe = await _context.NutrientRecipes.FindAsync(request.Id);
 
                 if (nutrientRecipe == null)
                     throw new RestException(HttpStatusCode.NotFound, new { NutrientRecipe = "Not found" });
+                
+                var mappedNutrientRecipe = _mapper.Map<NutrientRecipe, NutrientRecipeDto>(nutrientRecipe);
 
-                return nutrientRecipe;
+                return mappedNutrientRecipe;
             }
         }
     }

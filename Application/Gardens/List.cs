@@ -26,9 +26,10 @@ namespace Application.Gardens
 
             public async Task<List<GardenDto>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var mappedGardens = await _context.Gardens.ToListAsync();
+                var gardens = await _context.Gardens.ToListAsync();
 
-                return _mapper.Map<List<Garden>, List<GardenDto>>(mappedGardens);            }
+                return _mapper.Map<List<Garden>, List<GardenDto>>(gardens);
+            }
         }
     }
 }

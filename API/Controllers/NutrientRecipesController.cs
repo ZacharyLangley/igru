@@ -13,14 +13,14 @@ namespace API.Controllers
     {
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<List<NutrientRecipe>>> List()
+        public async Task<ActionResult<List<NutrientRecipeDto>>> List()
         {
             return await Mediator.Send(new List.Query());
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<NutrientRecipe>> Details(Guid id)
+        public async Task<ActionResult<NutrientRecipeDto>> Details(Guid id)
         {
             return await Mediator.Send(new Details.Query{Id = id});
         }
