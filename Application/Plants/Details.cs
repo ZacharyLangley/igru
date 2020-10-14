@@ -6,32 +6,37 @@ using Application.Errors;
 using Domain;
 using MediatR;
 using Persistence;
+using AutoMapper;
 
 namespace Application.Plants
 {
     public class Details
     {
-        public class Query : IRequest<Plant>
+        public class Query : IRequest<PlantDto>
         {
             public Guid Id { get; set; }
         }
 
-        public class Handler : IRequestHandler<Query, Plant>
+        public class Handler : IRequestHandler<Query, PlantDto>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+            public Handler(DataContext context, IMapper mapper)
             {
-                this._context = context;
+                _mapper = mapper;
+                _context = context;
             }
 
-            public async Task<Plant> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<PlantDto> Handle(Query request, CancellationToken cancellationToken)
             {
                 var plant = await _context.Plants.FindAsync(request.Id);
 
                 if (plant == null)
                     throw new RestException(HttpStatusCode.NotFound, new { Plant = "Not found" });
 
-                return plant;
+                var mappedPlant = _mapper.Map<Plant, PlantDto>(plant);
+
+                return mappedPlant;
             }
         }
     }
