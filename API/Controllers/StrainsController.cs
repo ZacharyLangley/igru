@@ -13,14 +13,14 @@ namespace API.Controllers
     {
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<List<Strain>>> List()
+        public async Task<ActionResult<List<StrainDto>>> List()
         {
             return await Mediator.Send(new List.Query());
         }
 
         [HttpGet("{id}")]
         [Authorize]
-        public async Task<ActionResult<Strain>> Details(Guid id)
+        public async Task<ActionResult<StrainDto>> Details(Guid id)
         {
             return await Mediator.Send(new Details.Query{Id = id});
         }
