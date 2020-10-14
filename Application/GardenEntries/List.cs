@@ -5,26 +5,30 @@ using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using AutoMapper;
 
 namespace Application.GardenEntries
 {
     public class List
     {
-        public class Query : IRequest<List<GardenEntry>> { }
+        public class Query : IRequest<List<GardenEntryDto>> { }
 
-        public class Handler : IRequestHandler<Query, List<GardenEntry>>
+        public class Handler : IRequestHandler<Query, List<GardenEntryDto>>
         {
             private readonly DataContext _context;
-            public Handler(DataContext context)
+            private readonly IMapper _mapper;
+
+            public Handler(DataContext context,  IMapper mapper)
             {
+                _mapper = mapper;
                 _context = context;
             }
 
-            public async Task<List<GardenEntry>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<List<GardenEntryDto>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var gardenEntries = await _context.GardenEntries.ToListAsync();
+                var mappedGardenEntries = await _context.GardenEntries.ToListAsync();
 
-                return gardenEntries;
+                return _mapper.Map<List<GardenEntry>, List<GardenEntryDto>>(mappedGardenEntries);   
             }
         }
     }
