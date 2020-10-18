@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,9 +13,25 @@ namespace Application.PlantEntries
 {
     public class List
     {
-        public class Query : IRequest<List<PlantEntryDto>> { }
+        public class PlantEntriesEnvelope
+        {
+            public List<PlantEntryDto> PlantEntries { get; set; }
+            public int PlantEntryCount { get; set; }
+        }
+        public class Query : IRequest<PlantEntriesEnvelope>
+        {
+            public Query(int? limit, int? offset, DateTime? startDate)
+            {
+                Limit = limit;
+                Offset = offset;
+                StartDate = startDate ?? DateTime.Now;
+            }
+            public int? Limit { get; set; }
+            public int? Offset { get; set; }
+            public DateTime? StartDate { get; set; }
+        }
 
-        public class Handler : IRequestHandler<Query, List<PlantEntryDto>>
+        public class Handler : IRequestHandler<Query, PlantEntriesEnvelope>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -24,11 +42,20 @@ namespace Application.PlantEntries
                 _context = context;
             }
 
-            public async Task<List<PlantEntryDto>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<PlantEntriesEnvelope> Handle(Query request, CancellationToken cancellationToken)
             {
-                var plantEntries = await _context.PlantEntries.ToListAsync();
+                var queryable = _context.PlantEntries.AsQueryable();
 
-                return _mapper.Map<List<PlantEntry>, List<PlantEntryDto>>(plantEntries);
+                var plantEntries = await queryable
+                    .Skip(request.Offset ?? 0)
+                    .Take(request.Limit ?? 30)
+                    .ToListAsync();
+
+                return new PlantEntriesEnvelope
+                {
+                    PlantEntries = _mapper.Map<List<PlantEntry>, List<PlantEntryDto>>(plantEntries),
+                    PlantEntryCount = queryable.Count()
+                };
             }
         }
     }
