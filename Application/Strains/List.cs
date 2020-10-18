@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,8 +13,24 @@ namespace Application.Strains
 {
     public class List
     {
-        public class Query : IRequest<List<StrainDto>> { }
-        public class Handler : IRequestHandler<Query, List<StrainDto>>
+        public class StrainEnvelope
+        {
+            public List<StrainDto> Strains { get; set; }
+            public int StrainCount { get; set; }
+        }
+        public class Query : IRequest<StrainEnvelope>
+        {
+            public Query(int? limit, int? offset, DateTime? startDate)
+            {
+                Limit = limit;
+                Offset = offset;
+                StartDate = startDate ?? DateTime.Now;
+            }
+            public int? Limit { get; set; }
+            public int? Offset { get; set; }
+            public DateTime? StartDate { get; set; }
+        }
+        public class Handler : IRequestHandler<Query, StrainEnvelope>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -22,11 +40,20 @@ namespace Application.Strains
                 _mapper = mapper;
                 _context = context;
             }
-            public async Task<List<StrainDto>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<StrainEnvelope> Handle(Query request, CancellationToken cancellationToken)
             {
-                var strains = await _context.Strains.ToListAsync();
+                var queryable = _context.Strains.AsQueryable();
 
-                return _mapper.Map<List<Strain>, List<StrainDto>>(strains);
+                var strains = await queryable
+                    .Skip(request.Offset ?? 0)
+                    .Take(request.Limit ?? 30)
+                    .ToListAsync();
+
+                return new StrainEnvelope
+                {
+                    Strains =  _mapper.Map<List<Strain>, List<StrainDto>>(strains),
+                    StrainCount = queryable.Count()
+                };
             }
         }
     }
