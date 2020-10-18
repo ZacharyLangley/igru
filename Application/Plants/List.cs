@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,9 +13,26 @@ namespace Application.Plants
 {
     public class List
     {
-        public class Query : IRequest<List<PlantDto>> { }
+        public class PlantsEnvelope
+        {
+            public List<PlantDto> Plants { get; set; }
+            public int PlantCount { get; set; }
+        }
 
-        public class Handler : IRequestHandler<Query, List<PlantDto>>
+        public class Query : IRequest<PlantsEnvelope>
+        {
+            public Query(int? limit, int? offset, DateTime? startDate)
+            {
+                Limit = limit;
+                Offset = offset;
+                StartDate = startDate ?? DateTime.Now;
+            }
+            public int? Limit { get; set; }
+            public int? Offset { get; set; }
+            public DateTime? StartDate { get; set; }
+        }
+
+        public class Handler : IRequestHandler<Query, PlantsEnvelope>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -23,11 +42,19 @@ namespace Application.Plants
                 _mapper = mapper;
                 _context = context;
             }
-            public async Task<List<PlantDto>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<PlantsEnvelope> Handle(Query request, CancellationToken cancellationToken)
             {
-                var plants = await _context.Plants.ToListAsync();
+                var queryable = _context.Plants.AsQueryable();
 
-                return _mapper.Map<List<Plant>, List<PlantDto>>(plants);
+                var plants = await queryable
+                    .Skip(request.Offset ?? 0)
+                    .Take(request.Limit ?? 30)
+                    .ToListAsync();
+
+                return new PlantsEnvelope {
+                    Plants = _mapper.Map<List<Plant>, List<PlantDto>>(plants),
+                    PlantCount = queryable.Count()
+                };
             }
         }
     }
