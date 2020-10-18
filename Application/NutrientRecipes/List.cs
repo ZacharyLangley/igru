@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,9 +13,25 @@ namespace Application.NutrientRecipes
 {
     public class List
     {
-       public class Query : IRequest<List<NutrientRecipeDto>> { }
+       public class NutrientRecipeEnvelope
+       {
+           public List<NutrientRecipeDto> NutrientRecipes { get; set; }
+           public int NutrientRecipeCount { get; set; }
+       }
+       public class Query : IRequest<NutrientRecipeEnvelope>
+       {
+            public Query(int? limit, int? offset, DateTime? startDate)
+            {
+                Limit = limit;
+                Offset = offset;
+                StartDate = startDate ?? DateTime.Now;
+            }
+            public int? Limit { get; set; }
+            public int? Offset { get; set; }
+            public DateTime? StartDate { get; set; }
+       }
 
-        public class Handler : IRequestHandler<Query, List<NutrientRecipeDto>>
+        public class Handler : IRequestHandler<Query, NutrientRecipeEnvelope>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -24,11 +42,20 @@ namespace Application.NutrientRecipes
                 _context = context;
             }
 
-            public async Task<List<NutrientRecipeDto>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<NutrientRecipeEnvelope> Handle(Query request, CancellationToken cancellationToken)
             {
-                var nutrientRecipes = await _context.NutrientRecipes.ToListAsync();
+                var queryable = _context.NutrientRecipes.AsQueryable();
 
-                return _mapper.Map<List<NutrientRecipe>, List<NutrientRecipeDto>>(nutrientRecipes); 
+                var nutrientRecipes = await queryable
+                    .Skip(request.Offset ?? 0)
+                    .Take(request.Limit ?? 30)
+                    .ToListAsync();
+
+                return new NutrientRecipeEnvelope
+                {
+                    NutrientRecipes = _mapper.Map<List<NutrientRecipe>, List<NutrientRecipeDto>>(nutrientRecipes),
+                    NutrientRecipeCount = queryable.Count()
+                };
             }
         } 
     }
