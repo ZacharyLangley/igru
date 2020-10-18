@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
@@ -11,9 +13,26 @@ namespace Application.Gardens
 {
     public class List
     {
-        public class Query : IRequest<List<GardenDto>> { }
+        public class GardensEnvelope
+        {
+            public List<GardenDto> Gardens { get; set; }
+            public int GardenCount { get; set; }
+        }
 
-        public class Handler : IRequestHandler<Query, List<GardenDto>>
+        public class Query : IRequest<GardensEnvelope> 
+        {
+            public Query(int? limit, int? offset, DateTime? startDate)
+            {
+                Limit = limit;
+                Offset = offset;
+                StartDate = startDate ?? DateTime.Now;
+            }
+            public int? Limit { get; set; }
+            public int? Offset { get; set; }
+            public DateTime? StartDate { get; set; }
+        }
+
+        public class Handler : IRequestHandler<Query, GardensEnvelope>
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
@@ -24,11 +43,20 @@ namespace Application.Gardens
                 _context = context;
             }
 
-            public async Task<List<GardenDto>> Handle(Query request, CancellationToken cancellationToken)
+            public async Task<GardensEnvelope> Handle(Query request, CancellationToken cancellationToken)
             {
-                var gardens = await _context.Gardens.ToListAsync();
+                var queryable = _context.Gardens.AsQueryable();
 
-                return _mapper.Map<List<Garden>, List<GardenDto>>(gardens);
+                var gardens = await queryable
+                    .Skip(request.Offset ?? 0)
+                    .Take(request.Limit ?? 30)
+                    .ToListAsync();
+
+                return new GardensEnvelope
+                {
+                    Gardens = _mapper.Map<List<Garden>, List<GardenDto>>(gardens),
+                    GardenCount = queryable.Count()
+                };
             }
         }
     }

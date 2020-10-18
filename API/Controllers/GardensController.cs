@@ -15,9 +15,9 @@ namespace API.Controllers
     {
         [HttpGet]
         [Authorize]
-        public async Task<ActionResult<List<GardenDto>>> List()
+        public async Task<ActionResult<List.GardensEnvelope>> List(int? limit, int? offset, DateTime? startDate)
         {
-            return await Mediator.Send(new List.Query());
+            return await Mediator.Send(new List.Query(limit, offset, startDate));
         }
 
         [HttpGet("{id}")]
