@@ -20,12 +20,14 @@ namespace Application.PlantEntries
         }
         public class Query : IRequest<PlantEntriesEnvelope>
         {
-            public Query(int? limit, int? offset, DateTime? startDate)
+            public Query(Guid plantId, int? limit, int? offset, DateTime? startDate)
             {
+                PlantId = plantId;
                 Limit = limit;
                 Offset = offset;
                 StartDate = startDate ?? DateTime.Now;
             }
+            public Guid PlantId { get; set; }
             public int? Limit { get; set; }
             public int? Offset { get; set; }
             public DateTime? StartDate { get; set; }
@@ -45,6 +47,7 @@ namespace Application.PlantEntries
             public async Task<PlantEntriesEnvelope> Handle(Query request, CancellationToken cancellationToken)
             {
                 var queryable = _context.PlantEntries
+                    .Where(x => x.PlantId == request.PlantId)
                     .OrderBy(x => x.Created)
                     .AsQueryable();
 
