@@ -44,7 +44,9 @@ namespace Application.PlantEntries
 
             public async Task<PlantEntriesEnvelope> Handle(Query request, CancellationToken cancellationToken)
             {
-                var queryable = _context.PlantEntries.AsQueryable();
+                var queryable = _context.PlantEntries
+                    .OrderBy(x => x.Created)
+                    .AsQueryable();
 
                 var plantEntries = await queryable
                     .Skip(request.Offset ?? 0)

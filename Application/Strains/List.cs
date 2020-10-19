@@ -42,7 +42,9 @@ namespace Application.Strains
             }
             public async Task<StrainEnvelope> Handle(Query request, CancellationToken cancellationToken)
             {
-                var queryable = _context.Strains.AsQueryable();
+                var queryable = _context.Strains
+                    .OrderBy(x => x.Name)
+                    .AsQueryable();
 
                 var strains = await queryable
                     .Skip(request.Offset ?? 0)

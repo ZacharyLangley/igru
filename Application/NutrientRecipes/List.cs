@@ -44,7 +44,9 @@ namespace Application.NutrientRecipes
 
             public async Task<NutrientRecipeEnvelope> Handle(Query request, CancellationToken cancellationToken)
             {
-                var queryable = _context.NutrientRecipes.AsQueryable();
+                var queryable = _context.NutrientRecipes
+                    .OrderBy(x => x.Name)
+                    .AsQueryable();
 
                 var nutrientRecipes = await queryable
                     .Skip(request.Offset ?? 0)
