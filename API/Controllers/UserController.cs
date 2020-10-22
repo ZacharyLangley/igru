@@ -25,5 +25,11 @@ namespace API.Controllers
         {
             return await Mediator.Send(new CurrentUser.Query());
         }
+            
+        // [HttpGet("logout")]
+        // public async Task<ActionResult<User>> Logout()
+        // {
+        //     return await Mediator.Send(new Logout.Query());
+        // }
     }
 }

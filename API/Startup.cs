@@ -91,6 +91,23 @@ namespace API
                 // app.UseDeveloperExceptionPage();
             }
 
+            app.UseXContentTypeOptions();
+            app.UseReferrerPolicy(opt => opt.NoReferrer());
+            app.UseXXssProtection(opt => opt.EnabledWithBlockMode());
+            app.UseXfo(opt => opt.Deny());
+            // Controls what assets are able to be loaded externally
+            app.UseCsp(opt => opt
+                    // .BlockAllMixedContent() // Prevents loading any assets using http when using https
+                    .StyleSources(s => s.Self())
+                    // Allows for external style assets like fonts to be loaded. Ideally everything should be local outside of installing the npm and dotnet packages
+                    // .StyleSources(s => s.Self().CustomSources("https://fonts.googleapis.com", "sha256-F4GpCPyRepgP5znjMD8sc7PEjzet5Eef4r09dEGPpTs="))
+                    // .FontSources(s => s.Self().CustomSources("https://fonts.gstatic.com", "data:"))
+                    .FormActions(s => s.Self())
+                    .FrameAncestors(s => s.Self())
+                    .ImageSources(s => s.Self())
+                    .ScriptSources(s => s.Self())
+                );
+
             // app.UseHttpsRedirection();
             app.UseRouting();
             app.UseCors("CorsPolicy");
