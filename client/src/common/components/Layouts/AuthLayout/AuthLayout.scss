@@ -1,0 +1,49 @@
+@import "common/global.scss";
+
+.auth-layout-container {
+    height: 100%;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    color: $grey;
+    
+    .auth-content {
+        height: 100%;
+        width: 100%;
+        max-height: 500px;
+        max-width: 400px;
+
+        .form-container {
+            .form-title {
+                font-size: 14px;
+                font-weight: 800;
+                font-family: 'Open Sans', sans-serif;
+                margin-bottom: 20px;
+            }
+
+            .form-container {
+                margin-bottom: 20px;
+            }
+        }
+
+        .footer-container {
+            font-size: 12px;
+            display: flex;
+            flex-direction: row;
+            .link-container {
+                display: flex;
+                align-items: center;
+                flex: 1;
+                .title {
+                    margin-right: 4px;
+                }
+                .link {
+                    text-decoration: none;
+                }
+            }
+            .button-container {
+            }
+        }
+    }
+}

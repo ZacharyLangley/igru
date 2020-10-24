@@ -3,10 +3,15 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router'
 
-import './index.scss';
 import configureStore, { history } from './configureStore'
 import App from './app/App';
 import * as serviceWorker from './serviceWorker';
+
+import './index.scss';
+import "fontsource-roboto/300.css"
+import "fontsource-roboto/400.css"
+import "fontsource-roboto/500.css"
+import "fontsource-roboto/700.css"
 
 const store = configureStore() // Load initial State here if not already loaded in the reducer
 

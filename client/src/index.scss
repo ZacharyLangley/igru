@@ -1,3 +1,9 @@
+$primaryColor: #4eae53;
+
+#root {
+    background: linear-gradient(110deg, white 60%, $primaryColor 60%);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
