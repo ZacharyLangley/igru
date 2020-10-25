@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { AuthLayout } from 'common/components';
+import { AuthTemplate } from 'common/components';
 import './Login.scss';
 
 class Login extends Component {
     render() {
         return (
-            <AuthLayout
+            <AuthTemplate
                 formTitle={'SIGN INTO YOUR ACCOUNT'}
                 form={
                     <form>

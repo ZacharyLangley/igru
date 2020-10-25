@@ -1,6 +1,6 @@
 import React from 'react';
 import { node, oneOfType, string } from 'prop-types';
-import './AuthLayout.scss';
+import './AuthTemplate.scss';
 import { Card, Logo, Button } from 'common/components';
 
 const AuthLayout = ({
