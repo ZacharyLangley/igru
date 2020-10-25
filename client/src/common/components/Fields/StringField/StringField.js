@@ -1,11 +1,15 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import './StringField.scss';
 
+const styles = { 
+    width: '100%',
+    marginBottom: '24px'
+};
+
 const StringField = (props) => {
     return (
-        <TextField variant="outlined" style={{ width: '100%' }} {...props}/>
+        <TextField variant="outlined" style={styles} {...props}/>
     )
 }
 

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { AuthTemplate } from 'common/components';
-import { StringField } from 'common/components/Fields'
+import { AuthTemplate, Form, PasswordField, StringField } from 'common/components';
 import './Login.scss';
 
 class Login extends Component {
@@ -9,9 +8,10 @@ class Login extends Component {
             <AuthTemplate
                 formTitle={'SIGN INTO YOUR ACCOUNT'}
                 form={
-                    <form>
+                    <Form>
                         <StringField label="Username" id="Username"/>
-                    </form>
+                        <PasswordField label="Password" id="Password"/>
+                    </Form>
                 }
                 footerText={'Need an account?'}
                 footerLinkUrl={'#'}
