@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { AuthTemplate } from 'common/components';
+import { StringField } from 'common/components/Fields'
 import './Login.scss';
 
 class Login extends Component {
@@ -9,10 +10,7 @@ class Login extends Component {
                 formTitle={'SIGN INTO YOUR ACCOUNT'}
                 form={
                     <form>
-                        <label>
-                            Name:
-                            <input type="text" name="name" />
-                        </label>
+                        <StringField label="Username" id="Username"/>
                     </form>
                 }
                 footerText={'Need an account?'}
