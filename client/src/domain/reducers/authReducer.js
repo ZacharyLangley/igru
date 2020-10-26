@@ -1,7 +1,7 @@
 import { SIGNIN_USER, LOAD_USER, SIGNOUT_USER, REGISTER_USER, LOGIN_FAILED } from '../types/authTypes';
 
 const initialState = {
-    user: null,
+    user: undefined,
     isAuthenticated: false,
     hasError: false
 }

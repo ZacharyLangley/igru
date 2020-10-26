@@ -3,7 +3,7 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import { routerMiddleware } from 'connected-react-router'
 import reduxThunk from 'redux-thunk';
 
-import createRootReducer from './domain/reducers'
+import createRootReducer from 'domain/reducers'
 
 export const history = createBrowserHistory()
 
