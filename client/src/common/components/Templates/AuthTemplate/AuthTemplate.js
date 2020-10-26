@@ -31,7 +31,7 @@ const AuthLayout = ({
                             <a href={footerLinkUrl} className={'link'}>{footerLinkText}</a>
                         </div>
                         <div className={'button-container'}>
-                            <Button onClick={onSubmit}>{buttonText}</Button>
+                            <Button type="submit" onClick={onSubmit}>{buttonText}</Button>
                         </div>
                     </div>
                 }

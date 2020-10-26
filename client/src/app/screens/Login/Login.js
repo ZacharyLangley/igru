@@ -1,26 +1,62 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux'
+import { push } from 'connected-react-router'
+import { signinUser } from 'domain/actions/authActions'
 import { AuthTemplate, Form, PasswordField, StringField } from 'common/components';
+
 import './Login.scss';
 
-class Login extends Component {
-    render() {
-        return (
-            <AuthTemplate
-                formTitle={'SIGN INTO YOUR ACCOUNT'}
-                form={
-                    <Form>
-                        <StringField label="Username" id="Username"/>
-                        <PasswordField label="Password" id="Password"/>
-                    </Form>
-                }
-                footerText={'Need an account?'}
-                footerLinkUrl={'#'}
-                footerLinkText={'Click here.'}
-                buttonText={'SUBMIT'}
-                onSubmit={() => console.log('Login Submit')}
-            />
-        )
-    }
+const Login = ({
+    signinUser,
+    push
+}) => {
+    const [values, setValues] = useState({
+        email: '',
+        password: '',
+        showPassword: false
+    })
+    
+    const handleChange = (prop) => (event) => {
+        setValues({ ...values, [prop]: event.target.value });
+    };
+
+    const handleClickShowPassword = () => {
+        setValues({ ...values, showPassword: !values.showPassword });
+    };
+
+    return (
+        <AuthTemplate
+            formTitle={'SIGN INTO YOUR ACCOUNT'}
+            form={
+                <Form>
+                    <StringField label="Email" id="Email" onChange={handleChange('email')}/>
+                    <PasswordField
+                        showPassword={values.showPassword} 
+                        onChange={handleChange('password')}
+                        handleClickShowPassword={handleClickShowPassword}
+                    />
+                </Form>
+            }
+            footerText={'Need an account?'}
+            footerLinkUrl={'#'}
+            footerLinkText={'Click here.'}
+            buttonText={'SUBMIT'}
+            onSubmit={() => { 
+                console.log('Login Submit');
+                signinUser(values.email, values.password, push);
+            }}
+        />
+    )
 }
 
-export default Login;
+const mapStateToProps = (state) => ({
+
+})
+
+const mapDispatchToProps = {
+    signinUser,
+    push
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

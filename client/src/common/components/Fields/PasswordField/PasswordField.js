@@ -1,5 +1,9 @@
 import React from 'react';
 import TextField from '@material-ui/core/TextField';
+import InputAdornment from '@material-ui/core/InputAdornment';
+import IconButton from '@material-ui/core/IconButton';
+import Visibility from '@material-ui/icons/Visibility';
+import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 import './PasswordField.scss';
 
@@ -8,14 +12,38 @@ const styles = {
     marginBottom: '24px'
 };
 
-const PasswordField = (props) => {
+const handleMouseDownPassword = (event) => {
+    event.preventDefault();
+};
+
+const PasswordField = ({
+    showPassword,
+    onChange,
+    handleClickShowPassword,
+    textFieldProps
+}) => {
     return (
         <TextField
-            type="password"
+            label="Password"
+            id="Password"
+            type={showPassword ? 'text' : 'password'}
             autoComplete="current-password"
             variant="outlined"
             style={styles}
-            {...props}
+            onChange={onChange}
+            InputProps={{
+                endAdornment: 
+                    <InputAdornment position="end">
+                      <IconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                      >
+                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                      </IconButton>
+                    </InputAdornment>
+            }}
+            {...textFieldProps}
         />
     )
 }
