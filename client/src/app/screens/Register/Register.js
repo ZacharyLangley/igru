@@ -30,7 +30,7 @@ const Register = ({
     };
 
     const handleClickShowConfirmPassword = () => {
-        setValues({ ...values, showPassword: !values.showPassword });
+        setValues({ ...values, showConfirmPassword: !values.showConfirmPassword });
     };
 
     return (
