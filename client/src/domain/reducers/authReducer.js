@@ -2,7 +2,6 @@ import { SIGNIN_USER, LOAD_USER, SIGNOUT_USER, REGISTER_USER, LOGIN_FAILED } fro
 
 const initialState = {
     user: undefined,
-    isAuthenticated: false,
     hasError: false
 }
 
@@ -18,21 +17,18 @@ export default function(state = initialState, action) {
                 ...state,
                 hasError: false,
                 user: action.payload,
-                isAuthenticated: true
             }
         case LOAD_USER:
             return {
                 ...state,
                 hasError: false,
-                user: action.payload.accessToken.payload.username,
-                isAuthenticated: true
+                user: action.payload,
             }
         case SIGNOUT_USER:
             return {
                 ...state,
                 user: null,
                 hasError: false,
-                isAuthenticated: false
             }
         case LOGIN_FAILED:
             return {

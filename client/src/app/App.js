@@ -2,12 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { object, func } from 'prop-types';
 import { Switch } from 'react-router-dom'
+import { push } from 'connected-react-router'
 
 import { loadUser } from 'domain/actions/authActions';
 import Routes from './routes';
 import './App.scss';
 
 class App extends Component {
+  
+  componentDidMount() {
+    this.props.loadUser(push)
+  }
+
   render() {
     const { user } = this.props;
     return (
@@ -25,7 +31,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  loadUser
+  loadUser,
+  push
 }
 
 App.propTypes = {
@@ -33,4 +40,4 @@ App.propTypes = {
   getUserData: func
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

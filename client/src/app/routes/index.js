@@ -2,6 +2,7 @@ import React from 'react';
 import { Route } from 'react-router-dom'
 
 import PrivateRoute from './PrivateRoute';
+import SessionRoute from './SessionRoute';
 import Login from '../screens/Login/Login';
 import Register from '../screens/Register/Register';
 
@@ -9,9 +10,9 @@ import Register from '../screens/Register/Register';
 const Routes = ({ user }) => {
     return (
         <>
-            <Route exact path="/" component={Login} />
-            <Route exact path="/Login" component={Login} />
-            <Route exact path="/Register" component={Register} />
+            <SessionRoute user={user} exact path="/" component={Login} />
+            <SessionRoute user={user} exact path="/Login" component={Login} />
+            <SessionRoute user={user} exact path="/Register" component={Register} />
 
             <PrivateRoute user={user} exact path={'/Gardens'} component={() => <div>Gardens</div>} />
             <PrivateRoute user={user} exact path={'/Gardens/:id'} component={() => <div>Garden Item</div>} />

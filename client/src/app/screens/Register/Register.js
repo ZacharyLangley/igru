@@ -5,7 +5,6 @@ import { registerUser } from 'domain/actions/authActions'
 import { AuthTemplate, Form, PasswordField, StringField } from 'common/components';
 
 import './Register.scss';
-import { FlashOnRounded } from '@material-ui/icons';
 
 const Register = ({
     registerUser,

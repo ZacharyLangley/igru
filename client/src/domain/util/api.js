@@ -23,12 +23,13 @@ export const handleHttpStatus = (status) => {
             break;
         case 500:
             alert('Error: Register Failed')
+            break;
         default:
             break;
     }
 }
 
 export default axios.create({
-  baseURL: "http://localhost:5000/api/",
-  responseType: "json",
+    baseURL: "http://localhost:5000/api/",
+    responseType: "json",
 });
