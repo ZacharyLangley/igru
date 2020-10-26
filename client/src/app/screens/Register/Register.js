@@ -33,6 +33,14 @@ const Register = ({
         setValues({ ...values, showConfirmPassword: !values.showConfirmPassword });
     };
 
+    const onSubmit = ({ email, username, displayName, password, confirmPassword }, push) => {
+        if (email && username && displayName && password && confirmPassword) {
+            registerUser(email, username, displayName, password, push)
+        } else {
+            alert('Invalid Register Parmeters')
+        }
+    }
+
     return (
         <AuthTemplate
             formTitle={'CREATE A NEW ACCOUNT'}
@@ -49,15 +57,15 @@ const Register = ({
                         label="Username"
                         id="Username"
                         onChange={handleChange('username')}
-                        error={values.email === ""}
-                        helperText={values.email === "" ? 'Username field cannot be empty' : undefined }
+                        error={values.username === ""}
+                        helperText={values.username === "" ? 'Username field cannot be empty' : undefined }
                     />
                     <StringField 
                         label="Display Name"
                         id="Display Name"
                         onChange={handleChange('displayName')}
-                        error={values.email === ""}
-                        helperText={values.email === "" ? 'Dislpay Name field cannot be empty' : undefined }
+                        error={values.displayName === ""}
+                        helperText={values.displayName === "" ? 'Display Name field cannot be empty' : undefined }
                     />
                     <PasswordField
                         showPassword={values.showPassword} 
@@ -72,8 +80,11 @@ const Register = ({
                         showPassword={values.showConfirmPassword} 
                         onChange={handleChange('confirmPassword')}
                         handleClickShowPassword={handleClickShowConfirmPassword}
-                        error={values.confirmPassword === ""}
-                        helperText={values.confirmPassword === "" ? 'Confirm Password field cannot be empty' : undefined }
+                        error={values.confirmPassword === "" || values.password !== values.confirmPassword}
+                        helperText={
+                            values.confirmPassword === "" ? 'Confirm Password field cannot be empty' : 
+                            values.password !== values.confirmPassword ? "Password does not match" : undefined
+                        }
                     />
                 </Form>
             }
@@ -81,10 +92,7 @@ const Register = ({
             footerLinkUrl={'/Login'}
             footerLinkText={'Click here.'}
             buttonText={'REGISTER'}
-            onSubmit={() => { 
-                console.log('Register User Submit');
-                registerUser(values.email, values.username, values.displayName, values.password, push);
-            }}
+            onSubmit={() => onSubmit(values, push)}
         />
     )
 }

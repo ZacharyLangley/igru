@@ -21,6 +21,8 @@ export const handleHttpStatus = (status) => {
         case 401: 
             alert('Error: Invalid Credentials')
             break;
+        case 500:
+            alert('Error: Register Failed')
         default:
             break;
     }
