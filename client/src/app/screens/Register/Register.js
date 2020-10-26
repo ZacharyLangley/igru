@@ -80,7 +80,7 @@ const Register = ({
             footerText={'Already have an account?'}
             footerLinkUrl={'/Login'}
             footerLinkText={'Click here.'}
-            buttonText={'SUBMIT'}
+            buttonText={'REGISTER'}
             onSubmit={() => { 
                 console.log('Register User Submit');
                 registerUser(values.email, values.username, values.displayName, values.password, push);

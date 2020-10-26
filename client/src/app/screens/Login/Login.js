@@ -48,7 +48,7 @@ const Login = ({
             footerText={'Need an account?'}
             footerLinkUrl={'/Register'}
             footerLinkText={'Click here.'}
-            buttonText={'SUBMIT'}
+            buttonText={'LOGIN'}
             onSubmit={() => { 
                 console.log('Login Submit');
                 signinUser(values.email, values.password, push);
