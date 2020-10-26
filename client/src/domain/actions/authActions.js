@@ -1,4 +1,4 @@
-import { SIGNIN_USER, LOAD_USER, SIGNOUT_USER } from '../types/authTypes';
+import { SIGNIN_USER, LOAD_USER, SIGNOUT_USER, REGISTER_USER } from '../types/authTypes';
 import API, { handleError } from '../util/api';
 
 export const signinUser = (email, password, push) => async dispatch => {
@@ -12,6 +12,23 @@ export const signinUser = (email, password, push) => async dispatch => {
             payload: user.data
         })
         // push('/');
+    } catch (e) {
+        return handleError(e, dispatch)
+    }
+}
+
+export const registerUser = (email, username, displayName, password) => async dispatch => {
+    const user = await API.post('/user/register', {
+        email,
+        username,
+        displayName,
+        password
+    });
+    try {
+        dispatch({
+            type: REGISTER_USER,
+            payload: user.data
+        })
     } catch (e) {
         return handleError(e, dispatch)
     }

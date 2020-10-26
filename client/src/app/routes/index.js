@@ -1,15 +1,17 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router'
-import Login from '../screens/Login/Login';
+import { Route } from 'react-router-dom'
 
-export const Routes = ({ user }) => {
+import Login from '../screens/Login/Login';
+import Register from '../screens/Register/Register';
+
+// Routes has some user authentication checking, but will definately need a more secure solution
+const Routes = ({ user }) => {
     return (
         !user ?
         <>
             <Route exact path="/" component={Login} />
             <Route exact path="/Login" component={Login} />
-            <Route exact path="/Register" component={() => <div>Register</div>} />
-            <Route exact path="/ForgotPassword" component={() => <div>Forgot Password</div>} />
+            <Route exact path="/Register" component={Register} />
         </> : <>
             <Route exact path={'/Gardens'} component={() => <div>Gardens</div>} />
             <Route exact path={'/Gardens/:id'} component={() => <div>Garden Item</div>} />
@@ -27,3 +29,5 @@ export const Routes = ({ user }) => {
         </>
     ) 
 }
+
+export default Routes;

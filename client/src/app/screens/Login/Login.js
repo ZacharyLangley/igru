@@ -46,7 +46,7 @@ const Login = ({
                 </Form>
             }
             footerText={'Need an account?'}
-            footerLinkUrl={'#'}
+            footerLinkUrl={'/Register'}
             footerLinkText={'Click here.'}
             buttonText={'SUBMIT'}
             onSubmit={() => { 

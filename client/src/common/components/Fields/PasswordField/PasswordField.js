@@ -17,6 +17,8 @@ const handleMouseDownPassword = (event) => {
 };
 
 const PasswordField = ({
+    label,
+    id,
     showPassword,
     onChange,
     handleClickShowPassword,
@@ -26,8 +28,8 @@ const PasswordField = ({
 }) => {
     return (
         <TextField
-            label="Password"
-            id="Password"
+            label={label ? label :"Password"}
+            id={id ? id : "Password"}
             type={showPassword ? 'text' : 'password'}
             autoComplete="current-password"
             variant="outlined"

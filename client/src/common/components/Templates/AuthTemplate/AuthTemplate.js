@@ -1,7 +1,8 @@
 import React from 'react';
 import { node, oneOfType, string } from 'prop-types';
-import './AuthTemplate.scss';
 import { Card, Logo, Button } from 'common/components';
+import { Link } from "react-router-dom";
+import './AuthTemplate.scss';
 
 const AuthLayout = ({
     form,
@@ -28,7 +29,7 @@ const AuthLayout = ({
                     <div className={'footer-container'}>
                         <div className={'link-container'}>
                             <span className={'title'}>{footerText}</span>
-                            <a href={footerLinkUrl} className={'link'}>{footerLinkText}</a>
+                            <Link to={footerLinkUrl} className={'link'}>{footerLinkText}</Link>
                         </div>
                         <div className={'button-container'}>
                             <Button type="submit" onClick={onSubmit}>{buttonText}</Button>
