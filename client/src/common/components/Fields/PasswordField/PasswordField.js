@@ -20,6 +20,8 @@ const PasswordField = ({
     showPassword,
     onChange,
     handleClickShowPassword,
+    error,
+    helperText,
     textFieldProps
 }) => {
     return (
@@ -31,6 +33,8 @@ const PasswordField = ({
             variant="outlined"
             style={styles}
             onChange={onChange}
+            error={error}
+            helperText={helperText}
             InputProps={{
                 endAdornment: 
                     <InputAdornment position="end">

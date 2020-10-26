@@ -7,9 +7,24 @@ const styles = {
     marginBottom: '24px'
 };
 
-const StringField = (props) => {
+const StringField = ({
+    id,
+    label,
+    onChange,
+    error,
+    helperText,
+    textFieldProps
+}) => {
     return (
-        <TextField variant="outlined" style={styles} {...props}/>
+        <TextField
+            id={id}
+            label={label}
+            onChange={onChange}
+            error={error}
+            helperText={helperText}
+            variant="outlined" 
+            style={styles} 
+            {...textFieldProps}/>
     )
 }
 

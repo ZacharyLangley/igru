@@ -11,8 +11,8 @@ const Login = ({
     push
 }) => {
     const [values, setValues] = useState({
-        email: '',
-        password: '',
+        email: undefined,
+        password: undefined,
         showPassword: false
     })
     
@@ -29,11 +29,19 @@ const Login = ({
             formTitle={'SIGN INTO YOUR ACCOUNT'}
             form={
                 <Form>
-                    <StringField label="Email" id="Email" onChange={handleChange('email')}/>
+                    <StringField 
+                        label="Email"
+                        id="Email"
+                        onChange={handleChange('email')}
+                        error={values.email === ""}
+                        helperText={values.email === "" ? 'Email field cannot be empty' : undefined }
+                    />
                     <PasswordField
                         showPassword={values.showPassword} 
                         onChange={handleChange('password')}
                         handleClickShowPassword={handleClickShowPassword}
+                        error={values.password === ""}
+                        helperText={values.password === "" ? 'Password field cannot be empty' : undefined }
                     />
                 </Form>
             }
