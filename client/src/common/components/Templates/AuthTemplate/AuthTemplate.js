@@ -13,7 +13,7 @@ const AuthLayout = ({
     buttonText,
     onSubmit
 }) => (
-    <div className={'auth-layout-container'}>
+    <div className={'auth-template-container'}>
         <div className={'auth-content'}>
             <Card
                 header={<Logo />}

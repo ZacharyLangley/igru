@@ -1,4 +1,4 @@
-import Button from './Button/Button';
+import Button, { IconButton } from './Button/Button';
 import Card from './Card/Card';
 import Logo from './Logo/Logo';
 import { AuthTemplate } from './Templates';
@@ -13,6 +13,7 @@ export {
     Button,
     Card,
     Form,
+    IconButton,
     Logo,
     PasswordField,
     StringField

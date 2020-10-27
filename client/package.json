@@ -11,6 +11,7 @@
     "@testing-library/user-event": "^7.2.1",
     "axios": "^0.20.0",
     "connected-react-router": "^6.8.0",
+    "crypto-js": "^4.0.0",
     "fontsource-roboto": "^3.0.3",
     "history": "4.10.1",
     "js-cookie": "^2.2.1",

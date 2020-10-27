@@ -1,0 +1,13 @@
+@import "common/global.scss";
+
+.app-template-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    
+    .app-template-body {
+        flex: 1;
+        padding: $globalTopPadding $globalRightPadding $globalBottomPadding $globalLeftPadding;
+        background-color: $white;
+    }
+}

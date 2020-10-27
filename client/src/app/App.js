@@ -7,6 +7,7 @@ import { push } from 'connected-react-router'
 import { loadUser } from 'domain/actions/authActions';
 import Routes from './routes';
 import './App.scss';
+import AppTemplate from 'common/components/Templates/AppTemplate/AppTemplate';
 
 class App extends Component {
   
@@ -14,13 +15,27 @@ class App extends Component {
     this.props.loadUser(push)
   }
 
+  // render() {
+  //   const { user } = this.props;
+  //   return (
+  //     <div className={'App'}>
+  //       <Switch>
+  //         <Routes user={user} />
+  //       </Switch>
+  //     </div>
+  //   )
+  // }
   render() {
     const { user } = this.props;
     return (
       <div className={'App'}>
-        <Switch>
-          <Routes user={user} />
-        </Switch>
+        <AppTemplate 
+          body={
+            <div>
+              Body Content
+            </div>
+          }
+        />
       </div>
     )
   }
