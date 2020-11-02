@@ -5,7 +5,7 @@ const SessionRoute = ({ user, component: Component, ...rest }) => (
     <Route {...rest} render={(props) => (
       !user
         ? <Component {...props} />
-        : <Redirect to='/Gardens' />
+        : <Redirect to='/' />
     )} />
 )
 
