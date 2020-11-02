@@ -11,11 +11,8 @@ const Sidebar = ({
     push,
     toggleSidebar,
 }) => {
-    return (
-        <div>
-            Sidebar
-        </div>
-    )
+    const openClassName = (this.props.isSidebarOpen) ? 'open' : 'closed'
+    return <div className={`sidebar-container ${openClassName}`}>{'sidebar'}</div>
 }
 
 const mapStateToProps = (state) => ({

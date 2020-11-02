@@ -27,7 +27,7 @@ const Header = ({
                         isSidebarOpen ?
                         <MenuOpenIcon fontSize="large" style={menuButtonStyles}/> :
                         <MenuIcon fontSize="large" style={menuButtonStyles}/>
-}
+                    }
                 </IconButton>
             </div>
         )

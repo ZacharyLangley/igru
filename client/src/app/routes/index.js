@@ -5,14 +5,19 @@ import SessionRoute from './SessionRoute';
 import Login from '../screens/Login/Login';
 import Register from '../screens/Register/Register';
 
-// Routes has some user authentication checking, but will definately need a more secure solution
-const Routes = ({ user }) => {
+export const UnAuthRoutes = ({ user }) => {
     return (
         <>
             <SessionRoute user={user} exact path="/" component={Login} />
             <SessionRoute user={user} exact path="/Login" component={Login} />
             <SessionRoute user={user} exact path="/Register" component={Register} />
+        </>
+    ) 
+}
 
+export const AuthRoutes = ({ user }) => {
+    return (
+        <>
             <PrivateRoute user={user} exact path={'/Gardens'} component={() => <div>Gardens</div>} />
             <PrivateRoute user={user} exact path={'/Gardens/:id'} component={() => <div>Garden Item</div>} />
 
@@ -29,5 +34,3 @@ const Routes = ({ user }) => {
         </>
     ) 
 }
-
-export default Routes;

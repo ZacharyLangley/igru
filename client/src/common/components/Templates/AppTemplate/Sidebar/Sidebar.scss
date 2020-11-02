@@ -1,0 +1,16 @@
+@import 'common/global.scss';
+
+.sidebar-container {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: $white;
+    overflow-x: hidden;
+    transition: 0.5s;
+    -webkit-box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.28);
+    -moz-box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.28);
+    box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.28);
+}
