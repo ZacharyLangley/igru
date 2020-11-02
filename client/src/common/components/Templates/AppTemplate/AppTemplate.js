@@ -8,6 +8,7 @@ import './AppTemplate.scss';
 const AppTemplate = ({ body }) => (
     <div className={'app-template-container'}>
         <Header />
+        <Sidebar />
         <div className={'app-template-body'}>
             {body}
         </div>

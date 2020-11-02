@@ -7,11 +7,13 @@ import {
     StringField
 } from './Fields';
 import Form from './Form/Form';
+import Copyright from './Copyright/Copyright';
 
 export {
     AuthTemplate,
     Button,
     Card,
+    Copyright,
     Form,
     IconButton,
     Logo,

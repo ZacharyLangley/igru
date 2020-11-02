@@ -5,7 +5,7 @@ import SessionRoute from './SessionRoute';
 import Login from '../screens/Login/Login';
 import Register from '../screens/Register/Register';
 
-export const UnAuthRoutes = ({ user }) => {
+export const AuthRoutes = ({ user }) => {
     return (
         <>
             <SessionRoute user={user} exact path="/" component={Login} />
@@ -15,7 +15,7 @@ export const UnAuthRoutes = ({ user }) => {
     ) 
 }
 
-export const AuthRoutes = ({ user }) => {
+export const AppRoutes = ({ user }) => {
     return (
         <>
             <PrivateRoute user={user} exact path={'/Gardens'} component={() => <div>Gardens</div>} />

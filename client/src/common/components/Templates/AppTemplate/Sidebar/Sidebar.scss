@@ -13,4 +13,80 @@
     -webkit-box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.28);
     -moz-box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.28);
     box-shadow: 5px 0px 5px 0px rgba(0,0,0,0.28);
+    &.open {
+        width: 350px !important;
+
+    }
+    &.closed {
+        width: 0px !important;
+        overflow: hidden;
+    }
+
+    .sidebar-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        .siderbar-header {
+            height: 60px;
+            padding: 5px 20px;
+            border-bottom: 1px solid rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+
+            .branding {
+                display: flex;
+                height: inherit;
+                flex-direction: row;
+                align-items: center;           
+
+                .icon {
+                    height: 40px;
+                    width: 40px;
+                    margin-right: 10px;
+                }
+
+                .name {
+                    color: rgba(0,0,0,0.6);
+                    font-size: 24px;
+                    font-weight: 800;
+                    font-family: 'Open Sans', sans-serif;
+                }
+            }
+            .branding:hover {
+                cursor: pointer;
+            }
+        }
+    }
+
+    .sidebar-options-container {
+        flex: 1;
+        .sidebar-option {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 5px 30px;
+            height: 60px;
+            color: rgba(0,0,0,0.6);
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Open Sans', sans-serif;
+            min-width: 300px;
+
+            .label {
+                margin-left: 20px;
+            }
+        }
+        .sidebar-option:hover {
+            background-color: $green;
+            color: white;
+            cursor: pointer;
+        }
+    }
+
+    .sidebar-footer {
+        padding: 5px 20px;
+        height: 60px;
+    }
 }

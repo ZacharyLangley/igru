@@ -32,9 +32,7 @@ const Header = ({
             </div>
         )
     }
-
-    console.log(isSidebarOpen)
-
+    
     return (
         <div className={'header-container'}>
             {getMenuButton()}
