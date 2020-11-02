@@ -8,12 +8,14 @@ import {
 } from './Fields';
 import Form from './Form/Form';
 import Copyright from './Copyright/Copyright';
+import Dropdown from './Dropdown/Dropdown';
 
 export {
     AuthTemplate,
     Button,
     Card,
     Copyright,
+    Dropdown,
     Form,
     IconButton,
     Logo,

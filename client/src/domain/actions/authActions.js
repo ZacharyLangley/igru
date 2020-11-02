@@ -65,6 +65,7 @@ export const loadUser = (push) => async dispatch => {
 }
 
 export const logoutUser = () => async dispatch => {
+    Cookies.remove(JWT_PROPERTY_NAME)
     dispatch({
         type: SIGNOUT_USER
     })

@@ -15,7 +15,24 @@ $headerHeight: 60px;
     padding: 5px 20px;
     z-index: 1;
 
-    .igru-menu-button {
+    .util-button {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
 
+        .down-icon {
+            display: flex;
+            margin-right: 8px;
+            color: $green;
+        }
+
+        .avatar-icon {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            color: $green;
+        }
     }
 }
