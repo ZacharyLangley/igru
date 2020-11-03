@@ -2,10 +2,13 @@ import { push } from 'connected-react-router';
 import Cookies from 'js-cookie'
 
 import { SIGNIN_USER, LOAD_USER, SIGNOUT_USER, REGISTER_USER } from '../types/authTypes';
-import API, { handleError } from '../util/api';
-
-export const JWT_PROPERTY_NAME = 'igru-jwt-token'
-export const COOKIE_CONFIG = { expires: 7 }
+import { 
+    API,
+    COOKIE_CONFIG,
+    getAuthHeaders,
+    handleError,
+    JWT_PROPERTY_NAME,
+} from '../util/api';
 
 export const signinUser = (email, password, push) => async dispatch => {
     try {
@@ -47,10 +50,7 @@ export const registerUser = (email, username, displayName, password) => async di
 
 export const loadUser = (push) => async dispatch => {
     try {
-        const token = Cookies.get(JWT_PROPERTY_NAME);
-        const headers = {
-            'Authorization': `Bearer ${token}`
-        }
+        const headers = getAuthHeaders()
         const user = await API.get('/user', {headers});
         dispatch({
             type: LOAD_USER,

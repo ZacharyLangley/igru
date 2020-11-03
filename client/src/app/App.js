@@ -5,7 +5,7 @@ import { Switch } from 'react-router-dom'
 import { push } from 'connected-react-router'
 
 import { loadUser } from 'domain/actions/authActions';
-import Routes, { AuthRoutes, AppRoutes } from './routes';
+import { AuthRoutes, AppRoutes } from './routes';
 import './App.scss';
 import AppTemplate from 'common/components/Templates/AppTemplate/AppTemplate';
 

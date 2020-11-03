@@ -1,4 +1,15 @@
 import axios from "axios";
+import Cookies from 'js-cookie'
+
+export const JWT_PROPERTY_NAME = 'igru-jwt-token'
+export const COOKIE_CONFIG = { expires: 7 }
+
+export const getAuthHeaders = () => {
+    const token = Cookies.get(JWT_PROPERTY_NAME);
+    return {
+        'Authorization': `Bearer ${token}`
+    }
+}
 
 export const handleError = (error, dispatch) => {
     if (error.response) {
@@ -28,7 +39,7 @@ export const handleHttpStatus = (status) => {
     }
 }
 
-export default axios.create({
+export const API = axios.create({
     baseURL: "http://localhost:5000/api/",
     responseType: "json",
 });

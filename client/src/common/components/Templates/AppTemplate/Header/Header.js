@@ -4,7 +4,6 @@ import { push } from 'connected-react-router'
 import { object, func } from 'prop-types';
 import MenuIcon from '@material-ui/icons/Menu';
 import MenuOpenIcon from '@material-ui/icons/MenuOpen';
-import { MenuItem } from '@material-ui/core';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
@@ -52,11 +51,11 @@ const Header = ({
         const menuItems = [
             {
                 title: `Hello, ${formattedUsername}`,
-                onSelect: () => push('/Profile')
+                onSelect: toProfile
             },
             {
                 title: `Logout`,
-                onSelect: () => logoutUser() 
+                onSelect: onLogout
             }
         ];
         return (
