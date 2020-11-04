@@ -6,7 +6,7 @@ import {
 } from '../util/api';
 
 
-export const getGardenList = (limit=30, offset=0, startDate='') => {
+export const getGardenList = (limit=30, offset=0, startDate='') => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const gardenList = await API.get(`/api/gardens?limit=${30}&offset=${offset}&startDate=${startDate}`, {headers})
@@ -16,7 +16,7 @@ export const getGardenList = (limit=30, offset=0, startDate='') => {
     }
 }
 
-export const getGardenItem = (gardenId) => {
+export const getGardenItem = (gardenId) => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const gardenItem = await API.get(`/api/gardens/${gardenId}`, {headers})
@@ -26,7 +26,7 @@ export const getGardenItem = (gardenId) => {
     }
 }
 
-export const createGardenItem = (garden) => {
+export const createGardenItem = (garden) => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const gardenItem = await API.post(`/api/gardens`, garden, {headers})
@@ -38,7 +38,7 @@ export const createGardenItem = (garden) => {
     }
 }
 
-export const updateGardenItem = (garden) => {
+export const updateGardenItem = (garden) => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const gardenItem = await API.put(`/api/gardens`, garden, {headers})
@@ -50,7 +50,7 @@ export const updateGardenItem = (garden) => {
     }
 }
 
-export const deleteGardenItem = (gardenId) => {
+export const deleteGardenItem = (gardenId) => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const gardenItem = await API.delete(`/api/gardens/${gardenId}`, {headers})

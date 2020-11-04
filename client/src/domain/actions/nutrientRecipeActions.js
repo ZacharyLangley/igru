@@ -6,7 +6,7 @@ import {
 } from '../util/api';
 
 
-export const getNutrientRecipeList = (limit=30, offset=0, startDate='') => {
+export const getNutrientRecipeList = (limit=30, offset=0, startDate='') => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const nutrientRecipeList = await API.get(`/api/nutrientRecipes?limit=${30}&offset=${offset}&startDate=${startDate}`, {headers})
@@ -16,7 +16,7 @@ export const getNutrientRecipeList = (limit=30, offset=0, startDate='') => {
     }
 }
 
-export const getNutrientRecipeItem = (nutrientRecipeId) => {
+export const getNutrientRecipeItem = (nutrientRecipeId) => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const nutrientRecipeItem = await API.get(`/api/nutrientRecipes/${nutrientRecipeId}`, {headers})
@@ -26,7 +26,7 @@ export const getNutrientRecipeItem = (nutrientRecipeId) => {
     }
 }
 
-export const createNutrientRecipeItem = (nutrientRecipe) => {
+export const createNutrientRecipeItem = (nutrientRecipe) => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const nutrientRecipeItem = await API.post(`/api/nutrientRecipes`, nutrientRecipe, {headers})
@@ -38,7 +38,7 @@ export const createNutrientRecipeItem = (nutrientRecipe) => {
     }
 }
 
-export const updateNutrientRecipeItem = (nutrientRecipe) => {
+export const updateNutrientRecipeItem = (nutrientRecipe) => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const nutrientRecipeItem = await API.put(`/api/nutrientRecipes`, nutrientRecipe, {headers})
@@ -50,7 +50,7 @@ export const updateNutrientRecipeItem = (nutrientRecipe) => {
     }
 }
 
-export const deleteNutrientRecipeItem = (nutrientRecipeId) => {
+export const deleteNutrientRecipeItem = (nutrientRecipeId) => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const nutrientRecipeItem = await API.delete(`/api/nutrientRecipes/${nutrientRecipeId}`, {headers})

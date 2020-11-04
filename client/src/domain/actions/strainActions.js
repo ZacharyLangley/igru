@@ -6,7 +6,7 @@ import {
 } from '../util/api';
 
 
-export const getStrainList = (limit=30, offset=0, startDate='') => {
+export const getStrainList = (limit=30, offset=0, startDate='') => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const strainList = await API.get(`/api/strains?limit=${30}&offset=${offset}&startDate=${startDate}`, {headers})
@@ -16,7 +16,7 @@ export const getStrainList = (limit=30, offset=0, startDate='') => {
     }
 }
 
-export const getStrainItem = (strainId) => {
+export const getStrainItem = (strainId) => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const strainItem = await API.get(`/api/strains/${strainId}`, {headers})
@@ -26,7 +26,7 @@ export const getStrainItem = (strainId) => {
     }
 }
 
-export const createStrainItem = (strain) => {
+export const createStrainItem = (strain) => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const strainItem = await API.post(`/api/strains`, strain, {headers})
@@ -38,7 +38,7 @@ export const createStrainItem = (strain) => {
     }
 }
 
-export const updateStrainItem = (strain) => {
+export const updateStrainItem = (strain) => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const strainItem = await API.put(`/api/strains`, strain, {headers})
@@ -50,7 +50,7 @@ export const updateStrainItem = (strain) => {
     }
 }
 
-export const deleteStrainItem = (strainId) => {
+export const deleteStrainItem = (strainId) => async dispatch => {
     try {
         const headers = getAuthHeaders()
         const strainItem = await API.delete(`/api/strains/${strainId}`, {headers})
