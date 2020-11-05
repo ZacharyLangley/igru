@@ -4,11 +4,16 @@ import Logo from './Logo/Logo';
 import { AuthTemplate } from './Templates';
 import {
     PasswordField,
-    StringField
+    StringField,
+    SearchField
 } from './Fields';
 import Form from './Form/Form';
 import Copyright from './Copyright/Copyright';
 import Dropdown from './Dropdown/Dropdown';
+import { Toolbar } from './Layouts';
+import Table from './Table/Table';
+import Pagination from './Pagination/Pagination';
+import RadioGroup from './RadioGroup/RadioGroup';
 
 export {
     AuthTemplate,
@@ -20,5 +25,10 @@ export {
     IconButton,
     Logo,
     PasswordField,
-    StringField
+    StringField,
+    SearchField,
+    Toolbar,
+    Table,
+    Pagination,
+    RadioGroup
 }

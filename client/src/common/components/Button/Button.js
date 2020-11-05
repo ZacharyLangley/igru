@@ -10,7 +10,7 @@ const useStyles = makeStyles({
   });
 
   export const IconButton = (props) => {
-  return <MaterialIconButton {...props}>{props.children}</MaterialIconButton>
+    return <MaterialIconButton size={'small'} {...props}>{props.children}</MaterialIconButton>
   }
 
 const Button = (props) => {

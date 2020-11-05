@@ -1,0 +1,53 @@
+.data-table-container {
+    padding-top: 16px;
+            
+    .Table {
+        width: 100%;
+        margin-top: 15px;
+    }
+    .ReactVirtualized__Table__row:hover {
+        cursor: pointer;
+        background-image: linear-gradient(to bottom, #cfcfcf 0%, #c0c0c0 100%);
+    }
+    .ReactVirtualized__Table__row:focus {
+        outline: 0;
+        box-shadow: 0 0 1px #000 inset;
+        background-image: linear-gradient(to bottom, #cfcfcf 0%, #c0c0c0 100%);
+      }
+    .header-row,
+    .even-row,
+    .odd-row {
+        font-size: 13px;
+    }
+    .odd-row {
+        background-color: #fafafa;
+    }
+    .header-column {
+        text-transform: none;
+    }
+    .default-column {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .checkbox-label {
+        margin-left: .5rem;
+    }
+    .checkbox-label:first-of-type {
+        margin-left: 0;
+    }
+    
+    .no-rows {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1em;
+        color: #bdbdbd;
+    }
+}

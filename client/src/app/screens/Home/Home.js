@@ -3,7 +3,9 @@ import React from 'react';
 const Home = () => {
     return (
         <div>
-            Home
+            <div style={{ height: '400px', width: '100%'}}>
+                Home
+            </div>
         </div>
     )
 }

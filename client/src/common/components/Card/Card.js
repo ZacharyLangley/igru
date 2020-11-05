@@ -1,7 +1,7 @@
 import React from 'react';
 import './Card.scss';
 
-const Card = ({ height, width, header, body, footer }) => (
+const Card = ({ header, body, footer }) => (
     <div className={'card-container'}>
         {
             header &&

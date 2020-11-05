@@ -1,4 +1,3 @@
-import Cookies from 'js-cookie';
 import { 
     API,
     getAuthHeaders,
@@ -6,13 +5,13 @@ import {
 } from '../util/api';
 
 
-export const getGardenList = (limit=30, offset=0, startDate='') => async dispatch => {
+export const getGardenList = async (limit=30, offset=0, startDate='') => {
     try {
         const headers = getAuthHeaders()
         const gardenList = await API.get(`/gardens?limit=${30}&offset=${offset}&startDate=${startDate}`, {headers})
-        return gardenList;
+        return gardenList.data;
     } catch(e) {
-        return handleError(e, dispatch)
+        alert(e)
     }
 }
 
