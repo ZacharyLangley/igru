@@ -6,13 +6,13 @@ import {
 } from '../util/api';
 
 
-export const getNutrientRecipeList = (limit=30, offset=0, startDate='') => async dispatch => {
+export const getNutrientRecipeList = async (limit=30, offset=0, startDate='') => {
     try {
         const headers = getAuthHeaders()
         const nutrientRecipeList = await API.get(`/nutrientRecipes?limit=${30}&offset=${offset}&startDate=${startDate}`, {headers})
-        return nutrientRecipeList;
+        return nutrientRecipeList.data;
     } catch(e) {
-        return handleError(e, dispatch)
+        alert(e)
     }
 }
 

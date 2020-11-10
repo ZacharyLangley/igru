@@ -41,8 +41,8 @@ export const AppRoutes = ({ user }) => {
             <PrivateRoute user={user} exact path={'/Strains'} component={Strains} />
             <PrivateRoute user={user} exact path={'/Strains/:id'} component={StrainItem} />
 
-            <PrivateRoute user={user} exact path={'/NutrientRecipes'} component={NutrientRecipes} />
-            <PrivateRoute user={user} exact path={'/NutrientRecipes/:id'} component={NutrientRecipeItem} />
+            <PrivateRoute user={user} exact path={'/Nutrient-Recipes'} component={NutrientRecipes} />
+            <PrivateRoute user={user} exact path={'/Nutrient-Recipes/:id'} component={NutrientRecipeItem} />
 
             <PrivateRoute user={user} exact path={'/Settings'} component={Settings} />
         </>
