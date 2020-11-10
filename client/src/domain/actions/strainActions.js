@@ -6,13 +6,13 @@ import {
 } from '../util/api';
 
 
-export const getStrainList = (limit=30, offset=0, startDate='') => async dispatch => {
+export const getStrainList = async (limit=30, offset=0, startDate='') => {
     try {
         const headers = getAuthHeaders()
         const strainList = await API.get(`/strains?limit=${30}&offset=${offset}&startDate=${startDate}`, {headers})
-        return strainList;
+        return strainList.data;
     } catch(e) {
-        return handleError(e, dispatch)
+        alert(e)
     }
 }
 
