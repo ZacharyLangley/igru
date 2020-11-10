@@ -7,9 +7,10 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 
 const mapRadiobuttons = (radioButtons=[]) => {
-    return radioButtons.map(button => {
+    return radioButtons.map((button, index) => {
         return (
             <FormControlLabel
+                key={index}
                 value={button.value}
                 control={<Radio size={'small'} color="primary" />}
                 label={button.label}

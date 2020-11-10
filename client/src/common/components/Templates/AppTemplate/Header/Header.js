@@ -59,7 +59,7 @@ const Header = ({
             }
         ];
         return (
-            <Dropdown menuItems={menuItems}>
+            <Dropdown menuItems={menuItems} transparent>
                 <div className={'util-button'}>
                     <div className={'down-icon'}>
                         <ArrowDropDownIcon />

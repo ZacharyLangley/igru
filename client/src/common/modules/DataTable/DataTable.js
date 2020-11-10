@@ -105,10 +105,10 @@ const DataTable = ({
                         right={
                             <div className={'utility-container'}>
                                 <Dropdown menuItems={sortMenu}>
-                                    <Button className={classes.field} size={'large'}>{'Sort'}</Button>
+                                    {'Sort'}
                                 </Dropdown>
                                 <Dropdown menuItems={filterMenu}>
-                                    <Button className={classes.field} size={'large'}>{'Filter'}</Button>
+                                    {'Filter'}
                                 </Dropdown>
                             </div>
                         }

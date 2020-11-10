@@ -42,7 +42,7 @@ const SearchField = ({
                   }}
                 {...textFieldProps}/>
             <Button
-                size={'normal'}
+                size={'medium'}
                 className={classes.field}
                 onClick={onSubmit}
                 {...buttonProps}>
