@@ -13,7 +13,7 @@ import NutrientRecipes from '../screens/NutrientRecipes/NutrientRecipes';
 import NutrientRecipeItem from '../screens/NutrientRecipes/NutrientRecipeItem/NutrientRecipeItem';
 import Plants from '../screens/Plants/Plants';
 import PlantItem from '../screens/Plants/PlantItem/PlantItem';
-import Settings from '../screens/Strains/Strains';
+import Settings from '../screens/Settings/Settings';
 import Strains from '../screens/Strains/Strains';
 import StrainItem from '../screens/Strains/StrainItem/StrainItem';
 
