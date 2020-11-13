@@ -10,60 +10,31 @@ import {
     Button
 } from 'common/components';
 import { makeStyles } from '@material-ui/core/styles';
-
+import AddIcon from '@material-ui/icons/Add';
+import {
+    limitButtons,
+    sortMenu,
+    filterMenu
+} from './dropdownOptions';
 import './DataTable.scss';
 
 const useStyles = makeStyles((theme) => ({
     button: {
         margin: theme.spacing(1),
-        height: '72px'
+        backgroundColor: '#4eae53',
+        '&:hover': {
+            backgroundColor: '#469d4b',
+        }
     },
 }));
-
-
-const limitButtons = [
-    {
-        label: '30',
-        value: '30',
-    },
-    {
-        label: '60',
-        value: '60',
-    },
-    {
-        id: '',
-        label: '90',
-        value: '90',
-    }
-]
-
-const sortMenu = [
-    {
-        title: 'Name (Ascending)',
-        onSelect: () => { console.log('By Name') }
-    },
-    {
-        title: 'Name (Descending)',
-        onSelect: () => { console.log('By Name') }
-    },
-    {
-        title: 'Recently Created',
-        onSelect: () => { console.log('Most Recent') }
-    },
-    {
-        title: 'Last Updated',
-        onSelect: () => { console.log('By Name') }
-    }
-]
-
-const filterMenu = [{ title: 'TBD', onSelect: () => { console.log('TBD') }}]
 
 const DataTable = ({
     columns,
     onRowClick,
     getData,
     dataKey,
-    countKey
+    countKey,
+    addButtonLabel
 }) => {
     const [data, setData] = useState({})
     const [values, setValues] = useState({
@@ -75,6 +46,7 @@ const DataTable = ({
         search: '',
         startDate: undefined // Backend Implementation required
     })
+
     const classes = useStyles();
 
     useEffect(() => {
@@ -82,6 +54,7 @@ const DataTable = ({
             const data = await getData(values.limit, values.offset, values.startDate);
             setData(data)
         }
+        
         fetchData();
     }, [values.limit, values.offset])
 
@@ -110,6 +83,15 @@ const DataTable = ({
                                 <Dropdown menuItems={filterMenu}>
                                     {'Filter'}
                                 </Dropdown>
+                                <Button
+                                    variant="contained"
+                                    color={'secondary'}
+                                    className={classes.button}
+                                    size={'medium'}
+                                    onClick={() => {}}
+                                    startIcon={<AddIcon />}>
+                                    {addButtonLabel}
+                                </Button>
                             </div>
                         }
                     />

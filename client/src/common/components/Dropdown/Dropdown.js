@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import './Dropdown.scss';
 
-import { Button } from 'common/components';
 import MaterialButton from '@material-ui/core/Button';
 import ClickAwayListener from '@material-ui/core/ClickAwayListener';
 import Grow from '@material-ui/core/Grow';

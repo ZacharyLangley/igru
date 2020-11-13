@@ -41,6 +41,7 @@ const Plants = () => {
                 dataKey={'plants'}
                 countKey={'plantCount'}
                 getData={getPlantList}
+                addButtonLabel={'Add Plant'}
             />
         </div>
     )

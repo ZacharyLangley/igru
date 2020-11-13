@@ -36,6 +36,7 @@ const Strains = () => {
                 dataKey={'strains'}
                 countKey={'strainCount'}
                 getData={getStrainList}
+                addButtonLabel={'Add Strain'}
             />
         </div>
     )

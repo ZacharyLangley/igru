@@ -41,6 +41,7 @@ const NutrientRecipes = () => {
                 dataKey={'nutrientRecipes'}
                 countKey={'nutrientRecipeCount'}
                 getData={getNutrientRecipeList}
+                addButtonLabel={'Add Nutrient Recipe'}
             />
         </div>
     )
