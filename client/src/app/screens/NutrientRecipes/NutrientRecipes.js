@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
+import { DashboardTemplate } from 'common/components';
 
 import { DataTable } from 'common/modules';
 import { getNutrientRecipeList } from 'domain/actions/nutrientRecipeActions';
@@ -36,12 +37,17 @@ const columns = [
 const NutrientRecipes = () => {
     return (
         <div>
-            <DataTable 
-                columns={columns}
-                dataKey={'nutrientRecipes'}
-                countKey={'nutrientRecipeCount'}
-                getData={getNutrientRecipeList}
-                addButtonLabel={'Add Nutrient Recipe'}
+            <DashboardTemplate
+                bottom={
+                    <DataTable 
+                        columns={columns}
+                        dataKey={'nutrientRecipes'}
+                        countKey={'nutrientRecipeCount'}
+                        getData={getNutrientRecipeList}
+                        addButtonLabel={'Add Nutrient Recipe'}
+                        tableHeight={500}
+                    />
+                }
             />
         </div>
     )

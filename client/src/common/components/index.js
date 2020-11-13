@@ -1,7 +1,10 @@
 import Button, { IconButton } from './Button/Button';
 import Card from './Card/Card';
 import Logo from './Logo/Logo';
-import { AuthTemplate } from './Templates';
+import {
+    AuthTemplate,
+    DashboardTemplate
+} from './Templates';
 import {
     PasswordField,
     StringField,
@@ -17,6 +20,7 @@ import RadioGroup from './RadioGroup/RadioGroup';
 
 export {
     AuthTemplate,
+    DashboardTemplate,
     Button,
     Card,
     Copyright,

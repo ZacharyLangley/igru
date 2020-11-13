@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 
+import { DashboardTemplate } from 'common/components';
 import { DataTable } from 'common/modules';
 import { getStrainList } from 'domain/actions/strainActions';
 
@@ -31,12 +32,17 @@ const columns = [
 const Strains = () => {
     return (
         <div>
-            <DataTable 
-                columns={columns}
-                dataKey={'strains'}
-                countKey={'strainCount'}
-                getData={getStrainList}
-                addButtonLabel={'Add Strain'}
+            <DashboardTemplate
+                top={<div style={{ height: '250px' }}>{'TBD Top Modules'}</div>}
+                bottom={
+                    <DataTable 
+                        columns={columns}
+                        dataKey={'strains'}
+                        countKey={'strainCount'}
+                        getData={getStrainList}
+                        addButtonLabel={'Add Strain'}
+                    />
+                }
             />
         </div>
     )

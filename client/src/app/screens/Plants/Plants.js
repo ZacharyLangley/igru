@@ -1,7 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { push } from 'connected-react-router'
+import { connect } from 'react-redux';
+import { push } from 'connected-react-router';
 
+import { DashboardTemplate } from 'common/components';
 import { DataTable } from 'common/modules';
 import { getPlantList } from 'domain/actions/plantActions';
 
@@ -36,12 +37,17 @@ const columns = [
 const Plants = () => {
     return (
         <div>
-            <DataTable 
-                columns={columns}
-                dataKey={'plants'}
-                countKey={'plantCount'}
-                getData={getPlantList}
-                addButtonLabel={'Add Plant'}
+            <DashboardTemplate
+                top={<div style={{ height: '250px' }}>{'TBD Top Modules'}</div>}
+                bottom={
+                    <DataTable 
+                        columns={columns}
+                        dataKey={'plants'}
+                        countKey={'plantCount'}
+                        getData={getPlantList}
+                        addButtonLabel={'Add Plant'}
+                    />
+                }
             />
         </div>
     )

@@ -34,7 +34,8 @@ const DataTable = ({
     getData,
     dataKey,
     countKey,
-    addButtonLabel
+    addButtonLabel,
+    tableHeight
 }) => {
     const [data, setData] = useState({})
     const [values, setValues] = useState({
@@ -98,6 +99,7 @@ const DataTable = ({
                     <Table
                         data={data[`${dataKey}`]}
                         columns={columns}
+                        height={tableHeight}
                         rowCount={data[`${countKey}`]}
                         onRowClick={() => { console.log('click')} }
                     />
