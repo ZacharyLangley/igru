@@ -80,7 +80,7 @@ const Dropdown = ({
             >
               {children}
             </MaterialButton> 
-            <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
+            <Popper open={open} anchorEl={anchorRef.current} role={undefined} placement={'bottom-end'} transition disablePortal>
             {({ TransitionProps, placement }) => (
                 <Grow
                 {...TransitionProps}

@@ -1,11 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 
 import { DashboardTemplate } from 'common/components';
 import { DataTable } from 'common/modules';
 import { getGardenList } from 'domain/actions/gardenActions';
-
+import CreateGardenDialog from './Dialogs/CreateGardenDialog/CreateGardenDialog';
 const columns = [
     {
         label: 'Name',
@@ -40,6 +40,16 @@ const columns = [
 ]
 
 const Gardens = () => {
+    const [open, setOpen] = useState(true);
+  
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = (value) => {
+      setOpen(false);
+    };
+
     return (
         <div>
             <DashboardTemplate
@@ -54,6 +64,7 @@ const Gardens = () => {
                     />
                 }
             />
+            <CreateGardenDialog onClose={handleClose} open={open}/>
         </div>
     )
 }

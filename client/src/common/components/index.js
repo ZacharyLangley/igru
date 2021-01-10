@@ -17,6 +17,7 @@ import { Toolbar } from './Layouts';
 import Table from './Table/Table';
 import Pagination from './Pagination/Pagination';
 import RadioGroup from './RadioGroup/RadioGroup';
+import Dialog from './Dialog/Dialog';
 
 export {
     AuthTemplate,
@@ -24,6 +25,7 @@ export {
     Button,
     Card,
     Copyright,
+    Dialog,
     Dropdown,
     Form,
     IconButton,

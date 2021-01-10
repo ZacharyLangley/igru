@@ -6,6 +6,9 @@ import MaterialIconButton from '@material-ui/core/IconButton';
 const useStyles = makeStyles({
     root: {
       background: '#4eae53',
+      '&:hover': {
+        backgroundColor: '#469d4b',
+      }
     },
   });
 
