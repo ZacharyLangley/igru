@@ -35,6 +35,7 @@ const DataTable = ({
     dataKey,
     countKey,
     addButtonLabel,
+    onAddButtonClick,
     tableHeight
 }) => {
     const [data, setData] = useState({})
@@ -89,7 +90,7 @@ const DataTable = ({
                                     color={'secondary'}
                                     className={classes.button}
                                     size={'medium'}
-                                    onClick={() => {}}
+                                    onClick={onAddButtonClick}
                                     startIcon={<AddIcon />}>
                                     {addButtonLabel}
                                 </Button>

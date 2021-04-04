@@ -5,7 +5,8 @@ import { push } from 'connected-react-router'
 import { DashboardTemplate } from 'common/components';
 import { DataTable } from 'common/modules';
 import { getGardenList } from 'domain/actions/gardenActions';
-import CreateGardenDialog from './Dialogs/CreateGardenDialog/CreateGardenDialog';
+import GardenDialog from './Dialogs/GardenDialog/GardenDialog';
+import GardenForm from './Forms/GardenForm/GardenForm';
 const columns = [
     {
         label: 'Name',
@@ -40,15 +41,11 @@ const columns = [
 ]
 
 const Gardens = () => {
-    const [open, setOpen] = useState(true);
-  
-    const handleClickOpen = () => {
-      setOpen(true);
-    };
-  
-    const handleClose = (value) => {
-      setOpen(false);
-    };
+    const [openModal, setOpenModal] = useState(false);
+
+    const onModalChange = () => {
+        setOpenModal(!openModal)
+    }
 
     return (
         <div>
@@ -61,10 +58,14 @@ const Gardens = () => {
                         countKey={'gardenCount'}
                         getData={getGardenList}
                         addButtonLabel={'Add Garden'}
+                        onAddButtonClick={onModalChange}
                     />
                 }
             />
-            <CreateGardenDialog onClose={handleClose} open={open}/>
+            <GardenDialog 
+                onClose={onModalChange} 
+                open={openModal} 
+                content={<GardenForm/>}/>
         </div>
     )
 }

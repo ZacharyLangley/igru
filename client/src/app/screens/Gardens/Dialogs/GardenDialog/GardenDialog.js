@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
 
-import CreateGardenForm from '../../Forms/CreateGardenForm/CreateGardenForm';
+import GardenForm from '../../Forms/GardenForm/GardenForm';
 import { Dialog } from 'common/components';
 import { makeStyles } from '@material-ui/core/styles';
-import './CreateGardenDialog.scss';
+import './GardenDialog.scss';
 
 const useStyles = makeStyles({
     dialogContent: {
@@ -18,6 +18,7 @@ const CreateGarden = ({
     title,
     onClose,
     open,
+    content,
     ...props
 }) => {
     const classes = useStyles();
@@ -33,7 +34,7 @@ const CreateGarden = ({
             title={'Create Garden'}
             actions={true}>
             <div className={classes.dialogContent}>
-                <CreateGardenForm onSubmit={handleSubmit}/>
+               {content}
             </div>
         </Dialog>
     )
