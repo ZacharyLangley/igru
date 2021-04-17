@@ -29,7 +29,12 @@ function Dialog({
     const classes = useStyles();
 
     return (
-      <MaterialDialog onClose={onClose} aria-labelledby="dialog-title" open={open}>
+      <MaterialDialog
+        disableBackdropClick
+        maxWidth={'md'}
+        onClose={onClose}
+        aria-labelledby="dialog-title"
+        open={open}>
         <MaterialDialogTitle id="dialog-title">{title}</MaterialDialogTitle>
         <MaterialDialogContent>
             {props.children}
@@ -38,10 +43,10 @@ function Dialog({
             actions &&
             <MaterialDialogActions className={classes.dialogFooter}>
                 <Button className={'cancel'} variant="text" onClick={onClose} color="primary">
-                    Cancel
+                    {'Cancel'}
                 </Button>
                 <Button onClick={onClose} color="primary">
-                    Submit
+                    {'Submit'}
                 </Button>
             </MaterialDialogActions>
         }

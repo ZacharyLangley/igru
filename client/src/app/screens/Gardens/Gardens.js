@@ -5,8 +5,9 @@ import { push } from 'connected-react-router'
 import { DashboardTemplate } from 'common/components';
 import { DataTable } from 'common/modules';
 import { getGardenList } from 'domain/actions/gardenActions';
-import GardenDialog from './Dialogs/GardenDialog/GardenDialog';
-import GardenForm from './Forms/GardenForm/GardenForm';
+import GardenDialog from 'app/dialogs/GardenDialog';
+import GardenForm from 'app/forms/GardenForm';
+
 const columns = [
     {
         label: 'Name',
@@ -64,7 +65,8 @@ const Gardens = () => {
             />
             <GardenDialog 
                 onClose={onModalChange} 
-                open={openModal} 
+                open={true}
+                //open={openModal} 
                 content={<GardenForm/>}/>
         </div>
     )

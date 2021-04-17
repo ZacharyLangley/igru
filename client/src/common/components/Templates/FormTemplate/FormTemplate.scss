@@ -1,0 +1,12 @@
+.form-template-container {
+    display: flex;
+    flex-direction: row;
+    .form-left-field-container {
+        flex: 1;
+        margin-right: 8px; 
+    }
+    .form-right-field-container {
+        flex: 1;
+        margin-left: 8px;
+    }
+}

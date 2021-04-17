@@ -1,20 +1,18 @@
 import React, {useState} from 'react';
 import { connect } from 'react-redux'
 import { push } from 'connected-react-router'
-
-import GardenForm from '../../Forms/GardenForm/GardenForm';
 import { Dialog } from 'common/components';
 import { makeStyles } from '@material-ui/core/styles';
 import './GardenDialog.scss';
 
 const useStyles = makeStyles({
     dialogContent: {
-        minWidth: '500px',
-        minHeight: '200px',
+        minWidth: '700px',
+        minHeight: '300px',
     }
 });
 
-const CreateGarden = ({
+const GardenDialog = ({
     title,
     onClose,
     open,
@@ -42,4 +40,4 @@ const CreateGarden = ({
 
 
 
-export default CreateGarden;
+export default GardenDialog;

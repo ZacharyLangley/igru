@@ -9,6 +9,10 @@ import { AuthRoutes, AppRoutes } from './routes';
 import './App.scss';
 import AppTemplate from 'common/components/Templates/AppTemplate/AppTemplate';
 
+// TEST ACCOUNT:
+// Username: bob@test.com
+// Password: Pa$$w0rd
+
 class App extends Component {
   
   componentDidMount() {
